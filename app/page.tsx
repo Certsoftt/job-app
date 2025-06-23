@@ -1,11 +1,9 @@
-import CardPost from "@/components/CardPost";
+import DeliverablesPage from "./deliverables/page";
+
+export const revalidate = 60;
 
 const Home = () => {
-  return (
-    <section className="px-5 xl:px-18 py-10">
-      <CardPost />
-    </section>
-  );
+  return <DeliverablesPage />;
 };
 
 export default Home;
