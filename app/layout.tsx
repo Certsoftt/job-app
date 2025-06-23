@@ -32,7 +32,7 @@ export default function RootLayout({
             <Sidebar />
           </div>
           <div className="flex-1 flex flex-col">
-            <div className="w-full bg-white rounded-[24px] shadow-lg mt-4 mr-6 ml-0 mb-0">
+            <div className="w-full bg-white rounded-[24px] shadow-lg mt-4 mr-12 ml-0 mb-0">
               <TopNav />
             </div>
             <main className="flex-1 px-8 pt-10 pb-0 md:pb-0 md:pt-12 md:px-16 bg-transparent">

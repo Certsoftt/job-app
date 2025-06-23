@@ -5,7 +5,7 @@ const LogoutButton: React.FC = () => {
     <button
       type="button"
       aria-label="Logout"
-      className="w-full flex items-center justify-center gap-2 border border-red-200 text-red-500 py-2 rounded-md font-semibold text-sm hover:bg-red-50 transition-colors"
+      className="w-full flex items-center justify-start gap-2 mr-2 border border-red-200 text-red-500 py-2 rounded-md font-semibold text-sm hover:bg-red-50 transition-colors"
     >
       <svg
         width="20"

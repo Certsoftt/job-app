@@ -73,7 +73,7 @@ body {
 .bg-secondary { background-color: var(--secondary-900); }
 .bg-grey { background-color: var(--grey-400); }
 .bg-black { background-color: var(--black-900); }
-.text-primary { color: var(--primary-900); }
+.text-primary { color: var(--primary-800); }
 .text-secondary { color: var(--secondary-900); }
 .text-grey { color: var(--grey-900); }
 .text-black { color: var(--black-900); }

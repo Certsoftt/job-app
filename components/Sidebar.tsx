@@ -12,22 +12,24 @@ const Sidebar: React.FC = () => {
       aria-label="Sidebar navigation"
     >
       {/* Logo Section */}
-      <div className="w-full bg-[#18153A] flex items-center justify-center py-5 pb-5 rounded-t-[24px]">
+      <div className="w-full bg-[#18153A] flex items-center justify-center py-5 rounded-[24px]">
         <Image
           src="/images/logo_dashboard.png"
           alt="Nexoris Logo"
           width={120}
           height={40}
-          className="object-contain w-[120px] h-[40px]"
+          className="object-contain w-[120px] min-h-[72px]"
           priority
         />
       </div>
+      {/* Separation */}
+      <div className="w-full h-[2px] bg-main border-none my-2"></div>
       {/* Nav Section */}
-      <div className="flex-1 flex flex-col justify-between px-0 pt-6 pb-0">
-        <div className="flex-1 px-0">
+      <div className="flex-1 flex flex-col justify-between px-0 pt-2 pb-0">
+        <div className="flex-1 pl-4 mb-6">
           <SidebarNav />
         </div>
-        <div className="mt-auto px-4 pb-4">
+        <div className="mt-auto pl-4 pb-4">
           <UserProfileCard />
           <LogoutButton />
         </div>
