@@ -57,14 +57,14 @@ const DeliverablesComponent: React.FC = () => {
   return (
     <>
       <section className="w-[96%] ml-[3.9%] mt-8">
-        <div className="flex flex-col md:flex-row md:items-start mb-8 w-full">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 w-full">
           <div className="flex items-center gap-8 min-w-[400px]">
             <h1 id="deliverables-heading" className="text-[20px] md:text-[22px] font-extrabold text-primary tracking-tight leading-tight">Deliverables</h1>
             <button className="bg-[#5a3ee6] hover:bg-[#6d52e1] transition-colors text-white px-7 py-2.5 rounded-[8px] font-semibold text-[15px] shadow-none min-w-[180px] h-[40px] flex items-center justify-center" aria-label="Create new deliverable">New Deliverable</button>
           </div>
           {/* Only show filters if not in detail view */}
           {!selectedRow && (
-            <div className="flex flex-wrap gap-4 mb-0 mt-2 md:mt-4 justify-end w-full max-w-[600px]" aria-label="Filter deliverables">
+            <div className="flex flex-wrap gap-4 mb-0 mt-2 md:mt-4 w-full max-w-[600px]" aria-label="Filter deliverables">
               <FilterDropdown label="Client" options={getFilterOptions(filterOptions.client)} value={client} onChange={setClient} />
               <FilterDropdown label="Project" options={getFilterOptions(filterOptions.project)} value={project} onChange={setProject} />
               <FilterDropdown label="Status" options={getFilterOptions(filterOptions.status)} value={status} onChange={setStatus} />
