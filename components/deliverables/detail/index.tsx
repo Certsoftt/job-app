@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Tabs from "./Tabs";
 import DetailOverview from "./DetailOverview";

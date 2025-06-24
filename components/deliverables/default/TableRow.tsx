@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useRef } from "react";
 import Badge, { BadgeVariant } from "./Badge";
 import RowCard from "./RowCard";
