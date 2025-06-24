@@ -20,6 +20,10 @@ const EditableText: React.FC<EditableTextProps> = ({ value, onSave, className = 
     }
   }, [editing]);
 
+  useEffect(() => {
+    setText(value);
+  }, [value]);
+
   const handleBlur = () => {
     setEditing(false);
     if (text !== value) onSave(text);
@@ -42,18 +46,19 @@ const EditableText: React.FC<EditableTextProps> = ({ value, onSave, className = 
       onChange={e => setText(e.target.value)}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
-      className={`border border-[#C6B9F6] rounded px-2 py-1 text-base font-poppins ${inputClassName}`}
+      className={`border border-[#C6B9F6] rounded px-2 py-1 text-base font-poppins text-[#232323] ${inputClassName}`}
       aria-label={ariaLabel}
     />
   ) : (
     <span
-      className={`cursor-pointer ${className}`}
+      className={`cursor-pointer select-text ${className}`}
       tabIndex={0}
-      onClick={() => setEditing(true)}
-      onKeyDown={e => (e.key === 'Enter' ? setEditing(true) : undefined)}
       aria-label={ariaLabel}
       role="textbox"
       aria-readonly={!editing}
+      onClick={() => setEditing(true)}
+      onKeyDown={e => (e.key === 'Enter' ? setEditing(true) : undefined)}
+      style={{ color: '#232323' }}
     >
       {value}
     </span>

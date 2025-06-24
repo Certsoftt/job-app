@@ -42,7 +42,7 @@ const Sidebar: React.FC = () => {
                             alt={`${item.label} icon`}
                             width={15}
                             height={15}
-                            className={`${item.href === pathname ?"block" :"hidden group-hover:block"}`}
+                            className={`${item.href === pathname ?"group:block" :"hidden group-hover:block"}`}
                           />
                         </React.Fragment>
                       ))}
@@ -75,7 +75,7 @@ const Sidebar: React.FC = () => {
                           alt={`${item.label} icon`}
                           width={15}
                           height={15}
-                          className={`${item.href === pathname ?"block" :"hidden group-hover:block"}`}
+                          className={`${item.href === pathname ?"group:block" :"hidden group-hover:block"}`}
                         />
                       </React.Fragment>
                     ))}

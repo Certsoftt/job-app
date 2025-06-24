@@ -6,6 +6,8 @@ import AddLink from "./AddLink";
 import Image from "next/image";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 import { TableRowData } from "../default/TableRow";
+import MultiAutocomplete, { Option } from "./MultiAutocomplete";
+import { mockTeamOptions } from "@/utils/mockTeamOptions";
 
 interface DeliverableData extends TableRowData {
   title: string;
@@ -51,6 +53,17 @@ function toDeliverableData(row: DeliverableData | TableRowData | undefined): Del
 const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
   const [data, setData] = useState<DeliverableData>(toDeliverableData(row));
   const [showDelete, setShowDelete] = useState(false);
+  // Convert team string to Option[] for initial state
+  const parseTeam = (teamStr: string): Option[] => {
+    if (!teamStr) return [];
+    return teamStr.split(",").map(s => {
+      const trimmed = s.trim();
+      const found = mockTeamOptions.find(opt => opt.label === trimmed);
+      return found || { label: trimmed, value: trimmed.toLowerCase().replace(/\s+/g, "_") };
+    });
+  };
+  const [team, setTeam] = useState<Option[]>(parseTeam(data.team));
+  const [editingTeam, setEditingTeam] = useState(false);
 
   const handleFileChange = (file: File | null) => setData(d => ({ ...d, file }));
   const handleRemoveFile = () => setData(d => ({ ...d, file: null }));
@@ -62,14 +75,14 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
   };
 
   return (
-    <section className="w-[96%] ml-[3.9%] mt-6 bg-white rounded-xl border border-[#C6B9F6] p-0 overflow-hidden">
+    <section className="w-[98%] mt-6 bg-white rounded-xl border border-[#C6B9F6] border-l-4 border-l-[#5B2EDD] p-0 overflow-hidden">
       <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleDelete} />
       {/* Tabs */}
       <div className="border-b border-[#C6B9F6] rounded-t-xl bg-[#F7F5FF]">
         {/* Tabs component will be imported here */}
       </div>
       {/* Main Content */}
-      <div className="p-8">
+      <div className="p-7">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
           <div className="flex items-center gap-2">
             <EditableText
@@ -92,19 +105,39 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
         </div>
         <div className="text-[#A09CB6] text-base font-poppins font-medium mb-2">{data.project}</div>
         <div className="text-lg font-bold text-[#232323] font-poppins mb-1">{data.status}</div>
-        <div className="text-[#232323] text-base font-poppins mb-4">Due {data.dueDate}</div>
+        <div className="text-[#232323] text-sm font-bold font-poppins mb-4">Due {data.dueDate}</div>
         <hr className="border-[#E3DEFF] my-4" />
         <div className="mb-4">
-          <div className="text-[#5B2EDD] font-semibold text-base mb-1">Assigned Team Members</div>
-          <EditableText
-            value={data.team}
-            onSave={val => setData(d => ({ ...d, team: val }))}
-            className="text-[#232323] text-base font-poppins"
-            ariaLabel="Edit assigned team members"
-          />
+          <div className="text-[#5B2EDD] font-semibold font-poppins text-sm mb-1 flex items-center gap-2">
+            Assigned Team Members
+            <button
+              className="bg-transparent border-none outline-none p-1 ml-1"
+              aria-label="Edit team members"
+              onClick={() => setEditingTeam(true)}
+            >
+              <Image src="/edit_square.svg" alt="edit" width={18} height={18} />
+            </button>
+          </div>
+          {editingTeam ? (
+            <MultiAutocomplete
+              value={team}
+              options={mockTeamOptions}
+              onChange={opts => {
+                setTeam(opts);
+                setData(d => ({ ...d, team: opts.map(o => o.label).join(", ") }));
+              }}
+              placeholder="Add team members..."
+              ariaLabel="Edit assigned team members"
+              className="mt-1"
+            />
+          ) : (
+            <div className="text-[#232323] text-base font-poppins cursor-pointer" onClick={() => setEditingTeam(true)}>
+              {team.length > 0 ? team.map(t => t.label).join(", ") : <span className="text-[#A09CB6]">No team members</span>}
+            </div>
+          )}
         </div>
         <div className="mb-4">
-          <div className="text-[#5B2EDD] font-semibold text-base mb-1">Deliverable Description</div>
+          <div className="text-[#5B2EDD] font-semibold font-poppins text-sm mb-1">Deliverable Description</div>
           <EditableText
             value={data.description}
             onSave={val => setData(d => ({ ...d, description: val }))}
@@ -113,10 +146,11 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
           />
         </div>
         <div className="mb-4">
-          <div className="text-[#5B2EDD] font-semibold text-base mb-1">Upload Deliverable</div>
+          <div className="text-[#5B2EDD] font-semibold text-sm font-poppins mb-1">Upload Deliverable</div>
           <FileUpload file={data.file} onFileChange={handleFileChange} onRemove={handleRemoveFile} />
         </div>
         <AddLink onAdd={handleAddLink} />
+        <hr className="border-[#E3DEFF] my-4" />
         <div className="mt-8 flex justify-start">
           <button className="border-2 border-[#5B2EDD] text-[#5B2EDD] font-semibold rounded-lg px-8 py-2 bg-white hover:bg-[#F7F5FF] focus:ring-2 focus:ring-[#5B2EDD] transition-colors" aria-label="Notify client">Notify Client</button>
         </div>

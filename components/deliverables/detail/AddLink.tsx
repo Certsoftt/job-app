@@ -49,7 +49,7 @@ const AddLink: React.FC<AddLinkProps> = ({ onAdd }) => {
       ) : (
         <button
           type="button"
-          className="text-[#5B2EDD] font-semibold underline bg-transparent border-none outline-none focus:ring-2 focus:ring-[#5B2EDD]"
+          className="text-[#5B2EDD] font-semibold bg-transparent border-none outline-none focus:ring-2 focus:ring-[#5B2EDD]"
           onClick={() => setShowInput(true)}
           aria-label="Add link"
         >

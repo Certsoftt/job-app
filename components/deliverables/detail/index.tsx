@@ -21,7 +21,7 @@ const DeliverableDetail: React.FC<DeliverableDetailProps> = ({ row, onBack, onDe
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
-    <div>
+    <div className="w-[98%] mt-8">
       <BackButton onClick={onBack} />
       <Tabs tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
       {activeTab === "overview" && <DetailOverview row={row} onDelete={onDelete} />}

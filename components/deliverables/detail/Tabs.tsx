@@ -39,7 +39,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => {
             <span className="ml-2 inline-block w-2 h-2 bg-[#5B2EDD] rounded-full align-middle"></span>
           )}
           {activeTab === tab.id && (
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-4/5 h-1 bg-[#5B2EDD] rounded-t-full"></span>
+            <span
+              className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[40px] h-[4px] bg-[#5B2EDD] rounded-t-full"
+              style={{ bottom: "-2px" }}
+            ></span>
           )}
         </button>
       ))}
