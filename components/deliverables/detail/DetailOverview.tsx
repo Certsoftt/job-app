@@ -79,10 +79,10 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
               ariaLabel="Edit deliverable title"
             />
             <button className="bg-transparent border-none outline-none p-1 ml-1" aria-label="Edit title">
-              <Image src="/edit.svg" alt="edit" width={20} height={20} />
+              <Image src="/edit_square.svg" alt="edit" width={20} height={20} />
             </button>
             <button className="bg-transparent border-none outline-none p-1 ml-1" aria-label="Delete deliverable" onClick={() => setShowDelete(true)}>
-              <Image src="/delete.svg" alt="delete" width={20} height={20} />
+              <Image src="/recycle-bin.svg" alt="delete" width={20} height={20} />
             </button>
           </div>
           <div className="flex gap-6 items-center">
