@@ -4,8 +4,17 @@ import FileUpload from "./FileUpload";
 import AddLink from "./AddLink";
 import Image from "next/image";
 import DeleteConfirmModal from "./DeleteConfirmModal";
+import { TableRowData } from "../default/TableRow";
 
-const initialData = {
+interface DeliverableData extends TableRowData {
+  title: string;
+  team: string;
+  description: string;
+  file: File | null;
+  link: string;
+}
+
+const initialData: DeliverableData = {
   title: "Homepage Design",
   project: "Food Delivery Website",
   status: "Pending Approval",
@@ -13,32 +22,38 @@ const initialData = {
   team: "Tunde (Designer), Bayo (PM)",
   description:
     "The wireframe should show the structural layout for the app homepage, including navigation, hero section, and quick actions.",
-  file: null as File | null,
+  file: null,
   link: "",
+  deliverable: "Homepage Design",
+  client: "Tayo Wellens",
+  assignedTo: "John Doe",
 };
 
 interface DetailOverviewProps {
-  row?: any;
+  row?: DeliverableData | TableRowData;
   onDelete?: () => void;
 }
-interface DeliverableData {
-    title: string;
-    project: string;
-    status: string;
-    dueDate: string;
-    team: string;
-    description: string;
-    file: File | null;
-    link: string;
+
+function toDeliverableData(row: DeliverableData | TableRowData | undefined): DeliverableData {
+  if (!row) return initialData;
+  return {
+    ...initialData,
+    ...row,
+    title: (row as DeliverableData).title || row.deliverable,
+    team: (row as DeliverableData).team || '',
+    description: (row as DeliverableData).description || '',
+    file: (row as DeliverableData).file || null,
+    link: (row as DeliverableData).link || '',
+  };
 }
 
 const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
-  const [data, setData] = useState(row || initialData);
+  const [data, setData] = useState<DeliverableData>(toDeliverableData(row));
   const [showDelete, setShowDelete] = useState(false);
 
-const handleFileChange = (file: File | null) => setData((d: DeliverableData) => ({ ...d, file }));
-const handleRemoveFile = () => setData((d: DeliverableData) => ({ ...d, file: null }));
-const handleAddLink = (url: string) => setData((d: DeliverableData) => ({ ...d, link: url }));
+  const handleFileChange = (file: File | null) => setData(d => ({ ...d, file }));
+  const handleRemoveFile = () => setData(d => ({ ...d, file: null }));
+  const handleAddLink = (url: string) => setData(d => ({ ...d, link: url }));
 
   const handleDelete = () => {
     setShowDelete(false);
@@ -58,7 +73,7 @@ const handleAddLink = (url: string) => setData((d: DeliverableData) => ({ ...d, 
           <div className="flex items-center gap-2">
             <EditableText
               value={data.title}
-              onSave={val => setData((d: DeliverableData) => ({ ...d, title: val }))}
+              onSave={val => setData(d => ({ ...d, title: val, deliverable: val }))}
               className="text-[22px] font-extrabold text-[#5B2EDD] font-poppins mr-2"
               ariaLabel="Edit deliverable title"
             />
@@ -82,7 +97,7 @@ const handleAddLink = (url: string) => setData((d: DeliverableData) => ({ ...d, 
           <div className="text-[#5B2EDD] font-semibold text-base mb-1">Assigned Team Members</div>
           <EditableText
             value={data.team}
-            onSave={val => setData((d: DeliverableData) => ({ ...d, team: val }))}
+            onSave={val => setData(d => ({ ...d, team: val }))}
             className="text-[#232323] text-base font-poppins"
             ariaLabel="Edit assigned team members"
           />
@@ -91,7 +106,7 @@ const handleAddLink = (url: string) => setData((d: DeliverableData) => ({ ...d, 
           <div className="text-[#5B2EDD] font-semibold text-base mb-1">Deliverable Description</div>
           <EditableText
             value={data.description}
-            onSave={val => setData((d: DeliverableData) => ({ ...d, description: val }))}
+            onSave={val => setData(d => ({ ...d, description: val }))}
             className="text-[#232323] text-base font-poppins"
             ariaLabel="Edit deliverable description"
           />

@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import Tabs from "./Tabs";
 import DetailOverview from "./DetailOverview";
 import BackButton from "./BackButton";
+import { TableRowData } from "../default/TableRow";
 
-const TABS = [
+const TABS: { label: string; id: string; hasDot?: boolean }[] = [
   { label: "Overview", id: "overview" },
   { label: "Comments", id: "comments", hasDot: true },
   { label: "Review Request", id: "review", hasDot: true },
 ];
 
 interface DeliverableDetailProps {
-  row: any;
+  row: TableRowData;
   onBack: () => void;
   onDelete?: () => void;
 }

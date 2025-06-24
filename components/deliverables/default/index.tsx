@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import Table from "./Table";
 import Pagination from "./Pagination";
 import { TableMockData } from "@/utils/mockData";
-
-
+import { TableRowData } from "./TableRow";
 
 const PAGE_SIZE = 8;
 
 interface DeliverablesTableSectionProps {
   data?: typeof TableMockData;
-  onDeliverableClick?: (row: any) => void;
-  onViewAction?: (row: any) => void;
+  onDeliverableClick?: (row: TableRowData) => void;
+  onViewAction?: (row: TableRowData) => void;
 }
 
 const DeliverablesTableSection: React.FC<DeliverablesTableSectionProps> = ({ data, onDeliverableClick, onViewAction }) => {

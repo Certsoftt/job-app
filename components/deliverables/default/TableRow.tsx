@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import Badge, { BadgeVariant } from "./Badge";
-import ActionsMenu from "./ActionsMenu";
 import RowCard from "./RowCard";
 
 export interface TableRowData {

@@ -5,6 +5,7 @@ import { filterOptions, TableMockData } from "@/utils/mockData";
 import DeliverablesTableSection from "@/components/deliverables/default";
 import DeliverableDetail from "@/components/deliverables/detail";
 import Image from "next/image";
+import { TableRowData } from "../default/TableRow";
 
 const EmptyState = dynamic(() => import("@/components/ui/EmptyState"), { ssr: false });
 const FilterDropdown = dynamic(() => import("@/components/ui/FilterDropdown"), { ssr: false });
@@ -18,7 +19,7 @@ const DeliverablesComponent: React.FC = () => {
   const [status, setStatus] = useState("");
   const [date, setDate] = useState("");
   // Detail view state
-  const [selectedRow, setSelectedRow] = useState<any | null>(null);
+  const [selectedRow, setSelectedRow] = useState<TableRowData | null>(null);
 
   // Filtering logic
   const filteredData = useMemo(() => {
@@ -33,7 +34,7 @@ const DeliverablesComponent: React.FC = () => {
   }, [client, project, status, date]);
 
   // Handlers for opening/closing detail view
-  const handleOpenDetail = (row: any) => setSelectedRow(row);
+  const handleOpenDetail = (row: TableRowData) => setSelectedRow(row);
   const handleBack = () => setSelectedRow(null);
   // Remove row from filteredData and TableMockData on delete
   const handleDelete = () => {
@@ -89,7 +90,7 @@ const DeliverablesComponent: React.FC = () => {
                 <DeliverablesTableSection {...tableSectionProps} />
               )
             ) : (
-              <DeliverableDetail row={selectedRow} onBack={handleBack} onDelete={handleDelete} />
+              <DeliverableDetail row={selectedRow as TableRowData} onBack={handleBack} onDelete={handleDelete} />
             )}
           </Suspense>
         </div>
