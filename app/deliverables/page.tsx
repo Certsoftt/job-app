@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import DeliverablesComponent from "@/components/deliverables";
+import DeliverablesComponent from "@/components/deliverables/no-result";
 
 export const metadata: Metadata = {
   title: "Deliverables | Nexoris App",

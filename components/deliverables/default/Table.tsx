@@ -1,0 +1,29 @@
+import React from "react";
+import TableHeader from "./TableHeader";
+import TableRow, { TableRowData } from "./TableRow";
+
+interface TableProps {
+  data: TableRowData[];
+  onDeliverableClick?: (row: TableRowData) => void;
+  onViewAction?: (row: TableRowData) => void;
+}
+
+const Table: React.FC<TableProps> = ({ data, onDeliverableClick, onViewAction }) => (
+  <div className="overflow-x-auto rounded-lg shadow-md bg-transparent">
+    <table className="min-w-full bg-transparent" role="table" aria-label="Deliverables table">
+      <TableHeader />
+      <tbody>
+        {data.map((row, idx) => (
+          <TableRow
+            key={idx}
+            row={row}
+            onDeliverableClick={onDeliverableClick}
+            onViewAction={onViewAction}
+          />
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
+export default Table;

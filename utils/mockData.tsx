@@ -1,4 +1,4 @@
-import React from "react";
+import { TableRowData } from "@/components/deliverables/default/TableRow";
 
 export type sidebarNavItemsType = {
     label: string;
@@ -68,8 +68,21 @@ export const userProfile = {
 };
 
 export const filterOptions = {
-  client: ["All Clients", "Client A", "Client B"],
-  project: ["All Projects", "Project X", "Project Y"],
-  status: ["All Status", "Pending", "Completed"],
-  date: ["Newest", "Oldest"],
+  client: ["All Clients", "Tayo Wellens", "Andrew James"],
+  project: ["All Projects", "Food Delivery App", "Project Management App"],
+  status: ["All Status", "Approved", "Pending Approval", "In Progress", "Not Started"],
+  date: ["Newest", "Oldest", "Feb 15", "Due Today", "Due Tomorrow"],
 };
+
+export const TableMockData: TableRowData[] = [
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Approved", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Pending Approval", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "In Progress", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+];
