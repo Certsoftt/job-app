@@ -26,20 +26,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-main`}>
-        <div className="flex min-h-screen">
-          <div className="flex flex-col h-full bg-white rounded-[24px] shadow-lg m-4 ml-6 w-[260px] min-w-[220px]">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <main className="bg-[#EAE8F7] min-h-screen">
+          <div className="container mx-auto flex gap-6">
             <Sidebar />
-          </div>
-          <div className="flex-1 flex flex-col">
-            <div className="w-full bg-white rounded-[24px] shadow-lg mt-4 mr-12 ml-0 mb-0">
+            <div className="mt-[22px] w-[1260px]">
               <TopNav />
-            </div>
-            <main className="flex-1 px-8 pt-10 pb-0 md:pb-0 md:pt-12 md:px-16 bg-transparent">
               {children}
-            </main>
+            </div>
           </div>
-        </div>
+        </main>
       </body>
     </html>
   );

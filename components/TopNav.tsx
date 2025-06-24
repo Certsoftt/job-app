@@ -3,27 +3,41 @@ import Image from "next/image";
 
 const TopNav: React.FC = () => {
   return (
-    <nav className="flex items-center justify-between bg-white rounded-[24px] px-8 py-4 pr-8 shadow-sm w-full min-h-[72px] font-poppins" aria-label="Top navigation">
-      <div className="flex items-center gap-8 w-full max-w-[600px]">
-        <span className="font-bold text-[#5a3ee6] text-lg md:text-xl">Overview</span>
-        <input
-          type="text"
-          placeholder="Search Clients, Projects.."
-          aria-label="Search Clients, Projects"
-          className="rounded-[12px] px-6 py-2 bg-[#edeafd] text-[#5a3ee6] placeholder-[#b7a9e7] border-none w-full max-w-[425px] text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[#5a3ee6]"
-        />
+    <>
+      <div className="nav-links bg-[#FFFFFF] flex rounded-[10px] ml-[3.5%] align-center justify-between w-[96.5%] h-16 shadow-[1px_1px_2px_rgba(0,0,0,0.1)]">
+        <div className="flex gap-20 items-center ml-[36px]">
+          <h1 className=" font-semibold text-[17px] text-black">Overview</h1>
+          <div className="search my-[10px]">
+            <input
+              type="search"
+              className="search-input py-3 bg-[#EAE8F7] rounded-[10px] w-[442px] px-[24px] text-[12px] text-[#543CDA] placeholder-[#543CDA80] outline-none"
+              placeholder="Search Clients, Projects..."
+            />
+          </div>
+        </div>
+        <div className="flex items-center gap-10 mr-[67px]">
+          <p className="font-semibold text-[16px] text-[#543CDA]">
+            + New Client
+          </p>
+          <span>
+            <Image
+              src="/notification-alarm.svg"
+              alt="Notification icon"
+              width={24}
+              height={24}
+            />
+          </span>
+          <span>
+            <Image
+              src="/Profile-pic.svg"
+              alt="User avatar"
+              width={40}
+              height={40}
+            />
+          </span>
+        </div>
       </div>
-      <div className="flex items-center gap-6">
-        <button className="flex items-center gap-2 bg-white px-6 py-2 rounded-[8px] font-semibold text-[15px] shadow-none border-none min-w-[160px] h-[40px]" aria-label="Add new client">
-          <span className="text-lg font-bold text-primary">+</span>
-          <span className="text-[#5a3ee6] font-bold text-primary">New Client</span>
-        </button>
-        <span className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[#edeafd] border border-[#b7a9e7]">
-          <Image src="/icons/dark/notification.png" alt="notification icon" width={22} height={22} className="w-6 h-6 object-contain" />
-        </span>
-        <Image src="/images/Profile pic.png" alt="User avatar" width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
-      </div>
-    </nav>
+    </>
   );
 };
 

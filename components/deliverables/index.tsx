@@ -14,7 +14,7 @@ const DeliverablesComponent: React.FC = () => {
   const [date, setDate] = useState("");
 
   return (
-    <section className="w-full px-8">
+    <section className="w-[96%] ml-[3.9%] mt-8">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 w-full">
         <div className="flex items-center gap-8 min-w-[400px]">
           <h1 id="deliverables-heading" className="text-[20px] md:text-[22px] font-extrabold text-primary tracking-tight leading-tight">Deliverables</h1>
@@ -32,8 +32,8 @@ const DeliverablesComponent: React.FC = () => {
           <EmptyState
             icon={
               <>
-                <Image src="/images/tile_background.png" alt="background tile" width={180} height={80} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
-                <Image src="/images/search_empty.png" alt="search empty" width={90} height={90} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10" />
+                <Image src="/tile_background.svg" alt="background tile" width={180} height={80} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
+                <Image src="/search_empty.svg" alt="search empty" width={90} height={90} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10" />
               </>
             }
             title="No Deliverable Match Your Search"

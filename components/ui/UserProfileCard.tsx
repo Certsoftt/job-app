@@ -4,11 +4,15 @@ import { userProfile } from "@/utils/mockData";
 
 const UserProfileCard: React.FC = () => {
   return (
-    <div className="flex items-center gap-3 bg-grey-400 rounded-lg p-3 mb-3 border border-grey-500" role="region" aria-label="User profile">
-      <Image src={userProfile.avatar} alt={`Avatar of ${userProfile.name}`} width={48} height={48} className="w-12 h-12 rounded-full border-2 border-primary-900 object-cover" />
-      <div>
-        <div className="font-bold text-primary text-base leading-tight">{userProfile.name}</div>
-        <div className="text-xs text-black font-medium mt-1">{userProfile.role}</div>
+    <div className="flex items-center gap-4 border border-[#553bd96d] px-4 py-3 rounded-xl">
+      <Image src={userProfile.avatar} alt="" width={40} height={40} />
+      <div className="">
+        <h2 className="text-[#543CDA] font-semibold text-lg">
+          {userProfile.name}
+        </h2>
+        <p className="font-light text-sm text-gray-500">
+          {userProfile.role}
+        </p>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 export type sidebarNavItemsType = {
     label: string;
     href: string;
-    icon: string;
+    icon: Array<string[]>;
     active: boolean;
 }
 
@@ -11,57 +11,60 @@ export const sidebarNavItems: sidebarNavItemsType[] = [
   {
     label: "Dashboard",
     href: "/dashboard",
-    icon: '/icons/dark/dashboard.png',
+    icon: [['/dashboard-circle.svg','/dashboard-circle-hover.svg']],
     active: false,
   },
   {
     label: "Clients",
     href: "/clients",
-    icon: '/icons/dark/person.png',
+    icon: [['/user-single.svg','/user-single-hover.svg']],
     active: false,
   },
   {
     label: "Projects",
     href: "/projects",
-    icon: '/icons/dark/search.png',
+    icon: [['/search-dollar.svg', '/search-dollar-hover.svg']],
     active: false,
   },
   {
     label: "Deliverables",
     href: "/deliverables",
-    icon: '/icons/dark/view_list.png',
+    icon: [['/insert-side.svg','/insert-side-hover.svg']],
     active: true,
   },
   {
     label: "Meetings",
     href: "/meetings",
-    icon: '/icons/dark/webcam.png',
+    icon: [['/webcam-video.svg','/webcam-video-hover.svg']],
     active: false,
   },
   {
     label: "Messages",
     href: "/messages",
-    icon: '/icons/dark/chat-bubble.png',
+    icon: [['/chat-bubble.svg','/chat-bubble-hover.svg']],
     active: false,
   },
   {
     label: "Payments",
     href: "/payments",
-    icon: '/icons/dark/bill.png',
-    active: false,
-  },
-  {
-    label: "Settings",
-    href: "/settings",
-    icon: '/icons/dark/cog.png',
+    icon: [['/bill-2--currency.svg', '/bill-2--currency-hover.svg']],
     active: false,
   },
 ];
 
+export const sidebarNavSetting: sidebarNavItemsType[] =[
+  {
+    label: "Settings",
+    href: "/settings",
+    icon: [['/cog--work.svg','/cog--work-hover.svg']],
+    active: false,
+  },
+]
+
 export const userProfile = {
   name: "Tolu Ayomide",
   role: "Product Manager",
-  avatar: "/images/Profile pic.png",
+  avatar: "/Profile-pic.svg",
 };
 
 export const filterOptions = {
