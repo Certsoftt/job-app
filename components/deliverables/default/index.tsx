@@ -21,7 +21,7 @@ const DeliverablesTableSection: React.FC<DeliverablesTableSectionProps> = ({ dat
 
   return (
     <section
-      className="w-[98%] mt-6"
+      className="mt-6"
       aria-label="Deliverables Table Section"
     >
       <Table data={paginated} onDeliverableClick={onDeliverableClick} onViewAction={onViewAction} />

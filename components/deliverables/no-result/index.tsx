@@ -64,7 +64,7 @@ const DeliverablesComponent: React.FC = () => {
           </div>
           {/* Only show filters if not in detail view */}
           {!selectedRow && (
-            <div className="flex flex-wrap gap-4 mb-0 mt-2 md:mt-4 w-full w-full" aria-label="Filter deliverables">
+            <div className="flex flex-wrap gap-4 mb-0 mt-2 md:mt-4" aria-label="Filter deliverables">
               <FilterDropdown label="Client" options={getFilterOptions(filterOptions.client)} value={client} onChange={setClient} />
               <FilterDropdown label="Project" options={getFilterOptions(filterOptions.project)} value={project} onChange={setProject} />
               <FilterDropdown label="Status" options={getFilterOptions(filterOptions.status)} value={status} onChange={setStatus} />
