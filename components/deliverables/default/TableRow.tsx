@@ -57,53 +57,60 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   }, [menuOpen]);
 
   return (
-    <tr>
-      <td colSpan={7} className="p-0 border-none bg-transparent">
-        <div className="flex items-center rounded-lg border border-[#E3DEFF] bg-white min-h-[64px] my-2 w-full gap-0 shadow-none">
-          <span
-            className="flex-1 font-poppins font-normal text-sm text-[#232323] leading-6 pl-6 pr-2 py-4 whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:underline focus:underline outline-none"
+    <tr className="border-b border-[#E3DEFF] bg-white">
+      <td
+        className="px-4 py-4 w-[260px] text-center align-middle font-poppins text-sm text-[#232323] cursor-pointer hover:underline focus:underline outline-none"
+        tabIndex={0}
+        role="button"
+        aria-label={`View details for ${row.deliverable}`}
+        onClick={() => onDeliverableClick?.(row)}
+        onKeyDown={handleDeliverableKey}
+        style={{ whiteSpace: "nowrap" }}
+      >
+        {row.deliverable}
+      </td>
+      <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+        {row.project}
+      </td>
+      <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+        {row.client}
+      </td>
+      <td className="px-4 py-4 w-[200px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+        {row.assignedTo}
+      </td>
+      <td className="px-4 py-4 w-[160px] text-center align-middle">
+        <Badge variant={statusMap[row.status] || "notstarted"}>{row.status}</Badge>
+      </td>
+      <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+        {row.dueDate}
+      </td>
+      <td className="px-4 py-4 w-[120px] text-right align-middle relative">
+        <div ref={menuRef} className="inline-block">
+          <button
+            aria-label="More actions"
+            className="flex items-center justify-center w-8 h-8 rounded hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-primary"
             tabIndex={0}
-            role="button"
-            aria-label={`View details for ${row.deliverable}`}
-            onClick={() => onDeliverableClick?.(row)}
-            onKeyDown={handleDeliverableKey}
+            onClick={handleMenuClick}
           >
-            {row.deliverable}
-          </span>
-          <RowCard>{row.project}</RowCard>
-          <RowCard>{row.client}</RowCard>
-          <RowCard>{row.assignedTo}</RowCard>
-          <span className="flex-1 flex items-center justify-start px-2 py-4">
-            <Badge variant={statusMap[row.status] || "notstarted"}>{row.status}</Badge>
-          </span>
-          <RowCard>{row.dueDate}</RowCard>
-          <span className="flex-1 flex justify-end pr-6 py-4 relative" ref={menuRef}>
-            <button
-              aria-label="More actions"
-              className="flex items-center justify-center w-8 h-8 rounded hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-primary"
-              tabIndex={0}
-              onClick={handleMenuClick}
-            >
-              <span className="sr-only">More actions</span>
-              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <circle cx="4" cy="10" r="2" fill="#232427" />
-                <circle cx="10" cy="10" r="2" fill="#232427" />
-                <circle cx="16" cy="10" r="2" fill="#232427" />
-              </svg>
-            </button>
-            {menuOpen && (
-              <div className="absolute right-0 top-10 z-20 bg-white border border-[#E3DEFF] rounded-lg shadow-lg min-w-[120px] py-2">
-                <button
-                  className="w-full text-left px-4 py-2 text-[#5B2EDD] hover:bg-[#F7F5FF] font-poppins font-medium text-sm focus:outline-none"
-                  onClick={handleView}
-                  tabIndex={0}
-                >
-                  View
-                </button>
-                {/* Add more actions here if needed */}
-              </div>
-            )}
-          </span>
+            <span className="sr-only">More actions</span>
+            <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+              <circle cx="4" cy="10" r="2" fill="#232427" />
+              <circle cx="10" cy="10" r="2" fill="#232427" />
+              <circle cx="16" cy="10" r="2" fill="#232427" />
+            </svg>
+          </button>
+          {menuOpen && (
+            <div className="absolute right-0 top-10 z-20 bg-white border border-[#E3DEFF] rounded-lg shadow-lg min-w-[120px] py-2">
+              <button
+                className="w-full text-left px-4 py-2 text-[#5B2EDD] hover:bg-[#F7F5FF] font-poppins font-medium text-sm focus:outline-none"
+                onClick={handleView}
+                tabIndex={0}
+              >
+                View
+              </button>
+              {/* Add more actions here if needed */}
+            </div>
+          )}
         </div>
       </td>
     </tr>
