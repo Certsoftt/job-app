@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Badge, { BadgeVariant } from "./Badge";
-import RowCard from "./RowCard";
+// import RowCard from "./RowCard";
 
 export interface TableRowData {
   deliverable: string;
