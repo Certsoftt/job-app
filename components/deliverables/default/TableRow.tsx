@@ -61,7 +61,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       <td colSpan={7} className="p-0 border-none bg-transparent">
         <div className="flex items-center rounded-lg border border-[#E3DEFF] bg-white min-h-[64px] my-2 w-full gap-0 shadow-none">
           <span
-            className="flex-1 font-poppins font-normal text-sm text-[#232323] leading-6 text-center py-4 whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:underline focus:underline outline-none"
+            className="flex-1 font-poppins font-normal text-sm text-[#232323] leading-6 pl-6 pr-2 py-4 text-center whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:underline focus:underline outline-none"
             tabIndex={0}
             role="button"
             aria-label={`View details for ${row.deliverable}`}
