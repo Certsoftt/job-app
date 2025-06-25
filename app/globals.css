@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+@layer utilities {
+  @media (min-width: 1366px) {
+    .text-1366 {
+      font-size: 2rem;
+    }
+  }
+}
+
 :root {
   --background: #f6f6fb;
   --foreground: #171717;
@@ -60,6 +72,7 @@
     --foreground: #ededed;
   }
 }
+
 
 body {
   background: var(--background);
