@@ -10,8 +10,8 @@
       min-width: 100px;
     }
     .badge_pending_1366 {
-      padding-right: 2px;
-      padding-left: 2px;
+      padding-right: 0.5px;
+      padding-left: 0.5px;
     }
   }
 }
