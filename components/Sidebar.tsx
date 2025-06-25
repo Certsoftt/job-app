@@ -16,7 +16,7 @@ const Sidebar: React.FC = () => {
           <Image src="/logo.png" alt="Nexoris Logo" width={150} height={150} />
         </div>
 
-        <div className="bg-white w-[15rem] py-6 rounded-xl px-4 flex flex-col gap-4">
+        <div className="bg-white w-[15rem] py-6 rounded-xl px-8 flex flex-col gap-4">
           {/* <div className="flex items-end justify-end">
             <Image src="/Arrow - Up Circle.svg" alt="" width={30} height={30} />
           </div> */}
@@ -26,8 +26,8 @@ const Sidebar: React.FC = () => {
               {sidebarNavItems.map((item:sidebarNavItemsType)=>{
                 const isActive = item.href === pathname;
                 return(
-                  <li key={item.label} className={`${item.href === pathname ? "bg-[#543CDA] text-white" :"hover:bg-[#543CDA] hover:text-white"} flex items-center gap-4 px-4 py-4 rounded cursor-pointer text-[#543CDA] font-medium group`}>
-                    <span>
+                  <li key={item.label} className={`${isActive ? "bg-[#543CDA] text-white" :"hover:bg-[#543CDA] hover:text-white"} flex items-center gap-4 px-4 py-4 rounded cursor-pointer text-[#543CDA] font-medium group`}>
+                    <span className="flex items-center justify-center w-6 h-6">
                       {item.icon.map(([img1, img2])=>(
                         <React.Fragment key={img1}>
                           <Image
@@ -35,19 +35,19 @@ const Sidebar: React.FC = () => {
                             alt={`${item.label} icon`}
                             width={15}
                             height={15}
-                            className="group-hover:hidden"
+                            className={`${isActive ? "hidden" : "group-hover:hidden"}`}
                           />
                           <Image
                             src={img2}
                             alt={`${item.label} icon`}
                             width={15}
                             height={15}
-                            className={`${item.href === pathname ?"group:block" :"hidden group-hover:block"}`}
+                            className={`${isActive ? "block" : "hidden group-hover:block"}`}
                           />
                         </React.Fragment>
                       ))}
                     </span>
-                    <Link href={item.href} aria-current={isActive ? "page" : undefined}>
+                    <Link href={item.href} aria-current={isActive ? "page" : undefined} className="flex-1">
                       {item.label}
                     </Link>
                   </li>
@@ -60,7 +60,7 @@ const Sidebar: React.FC = () => {
             <ul>
               {sidebarNavSetting.map((item:sidebarNavItemsType)=>(
                 <li key={item.label} className={`${item.href === pathname ? "bg-[#543CDA] text-white" :"hover:bg-[#543CDA] hover:text-white"} flex items-center gap-4 px-4 py-4 rounded cursor-pointer text-[#543CDA] font-medium group`}>
-                  <span>
+                  <span className="flex items-center justify-center w-6 h-6">
                     {item.icon.map(([img1, img2])=>(
                       <React.Fragment key={img1}>
                         <Image
@@ -68,19 +68,19 @@ const Sidebar: React.FC = () => {
                           alt={`${item.label} icon`}
                           width={15}
                           height={15}
-                          className="group-hover:hidden"
+                          className={`${item.href === pathname ? "hidden" : "group-hover:hidden"}`}
                         />
                         <Image
                           src={img2}
                           alt={`${item.label} icon`}
                           width={15}
                           height={15}
-                          className={`${item.href === pathname ?"group:block" :"hidden group-hover:block"}`}
+                          className={`${item.href === pathname ? "block" : "hidden group-hover:block"}`}
                         />
                       </React.Fragment>
                     ))}
                   </span>
-                  <Link href={item.href}>
+                  <Link href={item.href} className="flex-1">
                     {item.label}
                   </Link>
                 </li>

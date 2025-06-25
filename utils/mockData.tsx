@@ -75,14 +75,14 @@ export const filterOptions = {
 };
 
 export const TableMockData: TableRowData[] = [
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Approved", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Pending Approval", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "In Progress", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
-  // { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Approved", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Pending Approval", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "In Progress", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
+  { deliverable: "Homepage Design", project: "Food Delivery App", client: "Tayo Wellens", assignedTo: "John Doe", status: "Not Started", dueDate: "Feb 15" },
 ];

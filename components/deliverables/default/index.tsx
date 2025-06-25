@@ -14,17 +14,22 @@ interface DeliverablesTableSectionProps {
 }
 
 const DeliverablesTableSection: React.FC<DeliverablesTableSectionProps> = ({ data, onDeliverableClick, onViewAction }) => {
-  const tableData = data || TableMockData;
+  const [tableData, setTableData] = useState(data || TableMockData);
   const [page, setPage] = useState(1);
   const total = Math.ceil(tableData.length / PAGE_SIZE);
   const paginated = tableData.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  const handleDeleteRow = (row: TableRowData) => {
+    setTableData(prev => prev.filter(r => r !== row));
+    // Optionally, add backend/API delete logic here
+  };
 
   return (
     <section
       className="mt-6"
       aria-label="Deliverables Table Section"
     >
-      <Table data={paginated} onDeliverableClick={onDeliverableClick} onViewAction={onViewAction} />
+      <Table data={paginated} onDeliverableClick={onDeliverableClick} onViewAction={onViewAction} onDeleteRow={handleDeleteRow} />
       <Pagination current={page} total={total} onPageChange={setPage} />
     </section>
   );

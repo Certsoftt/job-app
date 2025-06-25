@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Badge, { BadgeVariant } from "./Badge";
+import DeleteConfirmModal from "../detail/DeleteConfirmModal";
 import Image from "next/image";
-// import RowCard from "./RowCard";
 
 export interface TableRowData {
   deliverable: string;
@@ -17,6 +17,7 @@ interface TableRowProps {
   row: TableRowData;
   onDeliverableClick?: (row: TableRowData) => void;
   onViewAction?: (row: TableRowData) => void;
+  onDeleteRow?: (row: TableRowData) => void;
 }
 
 const statusMap: Record<string, BadgeVariant> = {
@@ -26,8 +27,9 @@ const statusMap: Record<string, BadgeVariant> = {
   "Not Started": "notstarted",
 };
 
-const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction }) => {
+const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Keyboard accessibility for Deliverable cell
@@ -45,17 +47,29 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
     onViewAction?.(row);
   };
 
-  // Close menu on outside click
+  // Modal close on outside click or Escape
   React.useEffect(() => {
-    if (!menuOpen) return;
+    if (!showDelete) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowDelete(false);
+    };
     const handleClick = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
+        setShowDelete(false);
       }
     };
+    document.addEventListener("keydown", handleKey);
     document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [menuOpen]);
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [showDelete]);
+
+  const handleDelete = () => {
+    setShowDelete(false);
+    if (onDeleteRow) onDeleteRow(row);
+  };
 
   return (
     <tr className="border-b border-[#E3DEFF] bg-white">
@@ -101,19 +115,34 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
             </svg>
           </button>
           {menuOpen && (
-            <div className="absolute right-0 top-10 z-20 bg-white border border-[#E3DEFF] rounded-lg shadow-lg min-w-[120px] py-2">
+            <div className="absolute right-0 top-10 z-30 bg-white border border-[#E3DEFF] rounded-lg shadow-lg min-w-[160px] py-2 flex flex-col divide-y divide-[#E3DEFF]">
               <button
-                className="w-full text-left px-4 py-2 text-[#5B2EDD] hover:bg-[#F7F5FF] font-poppins font-medium text-sm focus:outline-none"
+                className="flex items-center gap-2 px-4 py-3 text-[#5B2EDD] font-poppins font-medium text-base hover:bg-[#F7F5FF] focus:outline-none"
                 onClick={handleView}
                 tabIndex={0}
               >
-                <Image src="/arrow-cursor.svg" alt="edit" width={10} height={10} className="cursor-pointer py-2"> View</Image>
-                <Image src="/pencil--change-edit.svg" alt="edit" width={10} height={10} className="cursor-pointer py-2"> Edit</Image>
-                <Image src="/recycle-bin.svg" alt="edit" width={10} height={10} className="cursor-pointer text-red-600 py-2"> Delete</Image>
+                <Image src="/arrow-cursor.svg" alt="View" width={18} height={18} className="cursor-pointer"/>
+                View
               </button>
-              {/* Add more actions here if needed */}
+              <button
+                className="flex items-center gap-2 px-4 py-3 text-[#5B2EDD] font-poppins font-medium text-base hover:bg-[#F7F5FF] focus:outline-none"
+                onClick={handleView /* Add edit logic here */ }
+                tabIndex={0}
+              >
+                <Image src="/pencil--change-edit.svg" alt="Edit" width={18} height={18} className="cursor-pointer"/>
+                Edit
+              </button>
+              <button
+                className="flex items-center gap-2 px-4 py-3 text-red-600 font-poppins font-medium text-base hover:bg-[#F7F5FF] focus:outline-none"
+                onClick={() => setShowDelete(true)}
+                tabIndex={0}
+              >
+                <Image src="/recycle-bin.svg" alt="Cancel" width={18} height={18} className="cursor-pointer"/>
+                Cancel
+              </button>
             </div>
           )}
+          <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleDelete} />
         </div>
       </td>
     </tr>
