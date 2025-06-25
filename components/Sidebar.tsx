@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
   return (
     <>
       <aside className="w-[17.5%] p-6 flex flex-col space-y-6 top-0 left-0">
-        <div className="bg-black px-8 py-2 h-16 rounded-xl w-[15rem] flex items-center justify-center overflow-hidden">
+        <div className="bg-white px-8 py-2 h-16 rounded-xl w-[15rem] flex items-center justify-center overflow-hidden">
           <Image src="/logo.png" alt="Nexoris Logo" width={150} height={150} />
         </div>
 

@@ -6,8 +6,8 @@
 
 @layer utilities {
   @media (min-width: 1366px) {
-    .text-1366 {
-      font-size: 2rem;
+    .filterdropdown_1366 {
+      min-width: 100px;
     }
   }
 }

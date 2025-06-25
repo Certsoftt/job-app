@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Badge, { BadgeVariant } from "./Badge";
+import Image from "next/image";
 // import RowCard from "./RowCard";
 
 export interface TableRowData {
@@ -84,7 +85,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.dueDate}
       </td>
-      <td className="px-4 py-4 w-[120px] text-right align-middle relative">
+      <td className="cursor-pointer px-4 py-4 w-[120px] text-right align-middle relative">
         <div ref={menuRef} className="inline-block">
           <button
             aria-label="More actions"
@@ -106,7 +107,9 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
                 onClick={handleView}
                 tabIndex={0}
               >
-                View
+                <div className="cursor-pointer py-2"><Image src="/arrow-cursor.svg" alt="edit" width={10} height={10} /> View</div>
+                <div className="cursor-pointer py-2"><Image src="/pencil--change-edit.svg" alt="edit" width={10} height={10} /> Edit</div>
+                <div className="cursor-pointer text-red-600 py-2"><Image src="/recycle-bin.svg" alt="edit" width={10} height={10} /> Delete</div>
               </button>
               {/* Add more actions here if needed */}
             </div>
