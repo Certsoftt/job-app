@@ -6,7 +6,7 @@ type RowCardProps = {
 
 const RowCard = ({children}:RowCardProps) => {
   return (
-    <span className="flex-1 font-poppins font-normal text-sm text-[#232323] leading-6 pl-6 pr-2 text-center py-4 whitespace-nowrap overflow-hidden text-ellipsis">
+    <span className="flex-1 font-poppins font-normal text-sm text-[#232323] leading-6 pl-6 pr-2 py-4 whitespace-nowrap overflow-hidden text-ellipsis">
           {children}
     </span>
   )
