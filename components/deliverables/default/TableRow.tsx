@@ -107,9 +107,9 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
                 onClick={handleView}
                 tabIndex={0}
               >
-                <div className="cursor-pointer py-2"><Image src="/arrow-cursor.svg" alt="edit" width={10} height={10} /> View</div>
-                <div className="cursor-pointer py-2"><Image src="/pencil--change-edit.svg" alt="edit" width={10} height={10} /> Edit</div>
-                <div className="cursor-pointer text-red-600 py-2"><Image src="/recycle-bin.svg" alt="edit" width={10} height={10} /> Delete</div>
+                <Image src="/arrow-cursor.svg" alt="edit" width={10} height={10} className="cursor-pointer py-2"> View</Image>
+                <Image src="/pencil--change-edit.svg" alt="edit" width={10} height={10} className="cursor-pointer py-2"> Edit</Image>
+                <Image src="/recycle-bin.svg" alt="edit" width={10} height={10} className="cursor-pointer text-red-600 py-2"> Delete</Image>
               </button>
               {/* Add more actions here if needed */}
             </div>

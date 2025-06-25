@@ -9,6 +9,10 @@
     .filterdropdown_1366 {
       min-width: 100px;
     }
+    .badge_pending_1366 {
+      padding-right: 2px;
+      padding-left: 2px;
+    }
   }
 }
 

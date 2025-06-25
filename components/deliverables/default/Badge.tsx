@@ -16,7 +16,7 @@ interface BadgeProps {
 
 const Badge: React.FC<BadgeProps> = ({ children, variant }) => (
   <span
-    className={`font-poppins font-semibold text-sm rounded-md ${variant === "pending"?"px-1":"px-2"} py-1 min-w-[120px] text-center inline-block capitalize ${badgeStyles[variant]}`}
+    className={`font-poppins font-semibold text-sm rounded-md ${variant === "pending"?"px-1 badge_pending_1366":"px-2"} py-1 min-w-[120px] text-center inline-block capitalize ${badgeStyles[variant]}`}
     role="status"
     aria-label={children as string}
   >
