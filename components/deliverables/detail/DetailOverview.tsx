@@ -75,7 +75,7 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
   };
 
   return (
-    <section className="w-[98%] mt-6 bg-white rounded-xl border border-[#C6B9F6] border-l-4 border-l-[#5B2EDD] p-0 overflow-hidden">
+    <section className="mt-6 bg-white rounded-xl border border-[#C6B9F6] border-l-4 border-l-[#5B2EDD] p-0 overflow-hidden">
       <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleDelete} />
       {/* Tabs */}
       <div className="border-b border-[#C6B9F6] rounded-t-xl bg-[#F7F5FF]">
