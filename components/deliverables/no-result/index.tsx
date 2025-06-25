@@ -92,6 +92,19 @@ const DeliverablesComponent: React.FC = () => {
             ) : (
               <DeliverableDetail row={selectedRow as TableRowData} onBack={handleBack} onDelete={handleDelete} />
             )}
+            {/* If no deliverables, show empty state */
+            TableMockData.length === 0 && (
+              <EmptyState
+                icon={
+                  <>
+                    <Image src="/404_empty_state_illustration.svg" alt="404 empty state" width={180} height={180}/>
+                  </>
+                }
+                title="No Deliverables Yet"
+                description="You can create a new deleiverable when you create a project"
+                button="New Project"
+              />
+            )}
           </Suspense>
         </div>
       </section>
