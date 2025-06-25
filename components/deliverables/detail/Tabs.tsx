@@ -17,7 +17,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => {
     <div
       role="tablist"
       aria-label="Detail Tabs"
-      className="flex items-center border-b border-[#C6B9F6] rounded-t-xl bg-[#F7F5FF] px-4 pt-2"
+      className="flex items-center border-b border-[#C6B9F6] bg-white rounded-t-xl rounded-b-xl bg-[#F7F5FF] px-4 py-4 shadow-[1px_1px_2px_rgba(0,0,0,0.1)]"
     >
       {tabs.map((tab) => (
         <button

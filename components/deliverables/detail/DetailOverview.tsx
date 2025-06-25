@@ -108,15 +108,8 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
         <div className="text-[#232323] text-sm font-bold font-poppins mb-4">Due {data.dueDate}</div>
         <hr className="border-[#E3DEFF] my-4" />
         <div className="mb-4">
-          <div className="text-[#5B2EDD] font-semibold font-poppins text-sm mb-1 flex items-center gap-2">
+          <div className="text-[#5B2EDD] font-semibold font-poppins text-sm mb-1">
             Assigned Team Members
-            <button
-              className="bg-transparent border-none outline-none p-1 ml-1"
-              aria-label="Edit team members"
-              onClick={() => setEditingTeam(true)}
-            >
-              <Image src="/edit_square.svg" alt="edit" width={18} height={18} />
-            </button>
           </div>
           {editingTeam ? (
             <MultiAutocomplete
