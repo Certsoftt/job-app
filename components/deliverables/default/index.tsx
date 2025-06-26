@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import Table from "./Table";
-import Pagination from "./Pagination";
-import { TableMockData } from "@/utils/mockData";
-import { TableRowData } from "./TableRow";
+import Table from "@/components/ui/Table";
+import Pagination from "@/components/ui/Pagination";
+// import { TableMockData } from "@/utils/mockTableAndFilterOptionsData";
+import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
+import { TableRowData } from "@/components/ui/TableRow";
 
 const PAGE_SIZE = 8;
-
+const TableMockData = useTableOrFilter().tableMockData;
 interface DeliverablesTableSectionProps {
   data?: typeof TableMockData;
   onDeliverableClick?: (row: TableRowData) => void;

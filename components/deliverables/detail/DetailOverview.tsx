@@ -5,7 +5,7 @@ import FileUpload from "./FileUpload";
 import AddLink from "./AddLink";
 import Image from "next/image";
 import DeleteConfirmModal from "./DeleteConfirmModal";
-import { TableRowData } from "../default/TableRow";
+import { TableRowData } from "@/components/ui/TableRow";
 import MultiAutocomplete, { Option } from "./MultiAutocomplete";
 import { mockTeamOptions } from "@/utils/mockTeamOptions";
 
@@ -19,17 +19,17 @@ interface DeliverableData extends TableRowData {
 
 const initialData: DeliverableData = {
   title: "Homepage Design",
-  project: "Food Delivery Website",
-  status: "Pending Approval",
-  dueDate: "Feb 15",
+  columnTwo: "Food Delivery Website",
+  columnFive: "Pending Approval",
+  columnSix: "Feb 15",
   team: "Tunde (Designer), Bayo (PM)",
   description:
     "The wireframe should show the structural layout for the app homepage, including navigation, hero section, and quick actions.",
   file: null,
   link: "",
-  deliverable: "Homepage Design",
-  client: "Tayo Wellens",
-  assignedTo: "John Doe",
+  columnOne: "Homepage Design",
+  columnThree: "Tayo Wellens",
+  columnFour: "John Doe",
 };
 
 interface DetailOverviewProps {
@@ -42,7 +42,7 @@ function toDeliverableData(row: DeliverableData | TableRowData | undefined): Del
   return {
     ...initialData,
     ...row,
-    title: (row as DeliverableData).title || row.deliverable,
+    title: (row as DeliverableData).title || row.columnOne,
     team: (row as DeliverableData).team || '',
     description: (row as DeliverableData).description || '',
     file: (row as DeliverableData).file || null,
@@ -103,9 +103,9 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
             <button className="text-[#F5A623] font-semibold bg-transparent border-none outline-none focus:ring-2 focus:ring-[#F5A623]" aria-label="Mark as in progress">Mark As In Progress</button>
           </div>
         </div>
-        <div className="text-[#A09CB6] text-base font-poppins font-medium mb-2">{data.project}</div>
-        <div className="text-lg font-bold text-[#232323] font-poppins mb-1">{data.status}</div>
-        <div className="text-[#232323] text-sm font-bold font-poppins mb-4">Due {data.dueDate}</div>
+        <div className="text-[#A09CB6] text-base font-poppins font-medium mb-2">{data.columnTwo}</div>
+        <div className="text-lg font-bold text-[#232323] font-poppins mb-1">{data.columnFive}</div>
+        <div className="text-[#232323] text-sm font-bold font-poppins mb-4">Due {data.columnSix}</div>
         <hr className="border-[#E3DEFF] my-4" />
         <div className="mb-4">
           <div className="text-[#5B2EDD] font-semibold font-poppins text-sm mb-1">

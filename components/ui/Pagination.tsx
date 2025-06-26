@@ -12,7 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({ current, total, onPageChange })
       className="flex items-center justify-center mt-8"
       aria-label="Pagination"
     >
-      <div className="flex items-center bg-[#f6f6fb] rounded-[12px] shadow-sm px-4 py-2 gap-1 border border-[#edeafd]">
+      <div className="flex items-center bg-[#f6f6fb] rounded-[3px] shadow-sm px-4 py-2 gap-1 border border-[#edeafd]">
         <button
           className="flex items-center gap-1 px-2 py-1 text-[#bdbdbd] font-medium rounded transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           onClick={() => onPageChange(current - 1)}

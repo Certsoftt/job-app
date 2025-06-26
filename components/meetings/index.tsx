@@ -30,10 +30,10 @@ const DeliverablesComponent: React.FC = () => {
   const filteredData = useMemo(() => {
     if (!client && !project && !status && !date) return TableMockData;
     return TableMockData.filter(row => {
-      const clientMatch = !client || row.columnThree.toLowerCase() === client.toLowerCase();
-      const projectMatch = !project || row.columnTwo.toLowerCase() === project.toLowerCase();
+      const clientMatch = !client || row.columnTwo.toLowerCase() === client.toLowerCase();
+      const projectMatch = !project || row.columnThree.toLowerCase() === project.toLowerCase();
       const statusMatch = !status || row.columnFive.toLowerCase() === status.toLowerCase();
-      const dateMatch = !date || row.columnSix.toLowerCase() === date.toLowerCase();
+      const dateMatch = !date || row.columnOne.toLowerCase() === date.toLowerCase();
       return clientMatch && projectMatch && statusMatch && dateMatch;
     });
   }, [client, project, status, date]);
@@ -64,7 +64,7 @@ const DeliverablesComponent: React.FC = () => {
       <section className="w-[96%] ml-[3.9%] mt-8">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 w-full">
           {TableMockData.length !== 0 && (
-            <LeftButtonAndTextCard h1="Deliverables" button="New Deliverable"/>
+            <LeftButtonAndTextCard h1="Meetings" button="Schedule Meeting"/>
           )}
           {/* Only show filters if not in detail view */}
           {(!selectedRow && TableMockData.length !== 0) && (
@@ -88,7 +88,7 @@ const DeliverablesComponent: React.FC = () => {
                       <Image src="/search_empty.svg" alt="search empty" width={90} height={90} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10" />
                     </>
                   }
-                  title="No Deliverable Matches Your Search"
+                  title="No Meeting Matches Your Search"
                 />
               ) : (
                 TableMockData.length !== 0 && <DeliverablesTableSection {...tableSectionProps} />
@@ -101,12 +101,11 @@ const DeliverablesComponent: React.FC = () => {
               <EmptyState
                 icon={
                   <>
-                    <Image src="/404_empty_state_illustration.svg" alt="404 empty state" width={180} height={180}/>
+                    <Image src="/meeting_empty_state.svg" alt="404 empty state" width={180} height={100}/>
                   </>
                 }
-                title="No Deliverables Yet"
-                description="You can create a new deleiverable when you create a project"
-                button="New Project"
+                title="No meetings have been scheduled yet"
+                button="New Meeting"
               />
             )}
           </Suspense>

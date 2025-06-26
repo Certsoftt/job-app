@@ -1,16 +1,17 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Badge, { BadgeVariant } from "./Badge";
-import DeleteConfirmModal from "../detail/DeleteConfirmModal";
+import DeleteConfirmModal from "@/components/deliverables/detail/DeleteConfirmModal";
 import Image from "next/image";
+import { usePathname } from 'next/navigation';
 
 export interface TableRowData {
-  deliverable: string;
-  project: string;
-  client: string;
-  assignedTo: string;
-  status: string;
-  dueDate: string;
+  columnOne: string;
+  columnTwo: string;
+  columnThree: string;
+  columnFour: string;
+  columnFive: string;
+  columnSix: string;
 }
 
 interface TableRowProps {
@@ -20,17 +21,16 @@ interface TableRowProps {
   onDeleteRow?: (row: TableRowData) => void;
 }
 
-const statusMap: Record<string, BadgeVariant> = {
-  Approved: "approved",
-  "Pending Approval": "pending",
-  "In Progress": "progress",
-  "Not Started": "notstarted",
-};
+// const statusMap: Record<string, BadgeVariant> = ;
 
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+  const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>)
   const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   // Keyboard accessibility for Deliverable cell
   const handleDeliverableKey = (e: React.KeyboardEvent) => {
@@ -58,13 +58,31 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         setShowDelete(false);
       }
     };
+    if(pathname === "/meetings"){
+      const arr = row.columnOne.split("\n");
+      setText1(arr[0]);
+      setText2(arr[1]);
+      setStatusMap({
+        Upcoming: "upcoming",
+        Held: "held",
+        Cancelled: "cancelled",
+      })
+    }
+    if(pathname === "/deliverables"){
+      setStatusMap({
+        Approved: "approved",
+        "Pending Approval": "pending",
+        "In Progress": "progress",
+        "Not Started": "notstarted",
+      })
+    }
     document.addEventListener("keydown", handleKey);
     document.addEventListener("mousedown", handleClick);
     return () => {
       document.removeEventListener("keydown", handleKey);
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [showDelete]);
+  }, [showDelete, pathname]);
 
   const handleDelete = () => {
     setShowDelete(false);
@@ -77,27 +95,28 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         className="px-4 py-4 w-[260px] text-center align-middle font-poppins text-sm text-[#232323] cursor-pointer hover:underline focus:underline outline-none"
         tabIndex={0}
         role="button"
-        aria-label={`View details for ${row.deliverable}`}
+        aria-label={`View details for ${row.columnOne}`}
         onClick={() => onDeliverableClick?.(row)}
         onKeyDown={handleDeliverableKey}
         style={{ whiteSpace: "nowrap" }}
       >
-        {row.deliverable}
+        {pathname === "/meetings" && (<><p className="mb-1">{text1}</p><p>{text2}</p></>)}
+        {pathname === "/deliverables" && (<>{row.columnOne}</>)}
       </td>
       <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
-        {row.project}
+        {row.columnTwo}
       </td>
       <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
-        {row.client}
+        {row.columnThree}
       </td>
       <td className="px-4 py-4 w-[200px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
-        {row.assignedTo}
+        {row.columnFour}
       </td>
       <td className="px-4 py-4 w-[160px] text-center align-middle">
-        <Badge variant={statusMap[row.status] || "notstarted"}>{row.status}</Badge>
+        <Badge variant={statusMap[row.columnFive] || pathname==="/deliverables"?"notstarted":"cancelled"}>{row.columnFive}</Badge>
       </td>
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
-        {row.dueDate}
+        {row.columnSix}
       </td>
       <td className="cursor-pointer px-4 py-4 w-[120px] text-right align-middle relative">
         <div ref={menuRef} className="inline-block">
@@ -137,8 +156,8 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
                 onClick={() => setShowDelete(true)}
                 tabIndex={0}
               >
-                <Image src="/recycle-bin.svg" alt="Cancel" width={18} height={18} className="cursor-pointer"/>
-                Cancel
+                {pathname==="/deliverables" && (<><Image src="/recycle-bin.svg" alt="Delete" width={18} height={18} className="cursor-pointer"/> Delete</>)}
+                {pathname==="/meetings" && (<><Image src="/cancel.svg" alt="Cancel" width={18} height={18} className="cursor-pointer"/>Cancle</>)}
               </button>
             </div>
           )}

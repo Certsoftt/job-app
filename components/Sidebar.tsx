@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { sidebarNavItems, sidebarNavItemsType, sidebarNavSetting } from "@/utils/mockData";
+import { sidebarNavItems, sidebarNavItemsType, sidebarNavSetting } from "@/utils/mockSideBarData";
 import UserProfileCard from "@/components/ui/UserProfileCard";
 import LogoutButton from "@/components/ui/LogoutButton";
 

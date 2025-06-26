@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { userProfile } from "@/utils/mockData";
+import { userProfile } from "@/utils/mockUserData";
 
 const UserProfileCard: React.FC = () => {
   return (

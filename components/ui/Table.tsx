@@ -1,6 +1,6 @@
 import React from "react";
-import TableHeader from "./TableHeader";
-import TableRow, { TableRowData } from "./TableRow";
+import TableHeader from "@/components/ui/TableHeader";
+import TableRow, { TableRowData } from "@/components/ui/TableRow";
 
 interface TableProps {
   data: TableRowData[];

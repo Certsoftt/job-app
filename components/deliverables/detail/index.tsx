@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Tabs from "./Tabs";
 import DetailOverview from "./DetailOverview";
 import BackButton from "./BackButton";
-import { TableRowData } from "../default/TableRow";
+import { TableRowData } from "@/components/ui/TableRow";
 import ReviewRequest from "./ReviewRequest";
 import { mockReviewRequests } from "@/utils/mockReviewRequests";
 import Comment from "./Comment";

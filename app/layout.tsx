@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import TopNav from "@/components/TopNav";
+import TableAndFilterOptionsMockDataProvider from "@/utils/mockTableAndFilterOptionsData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,15 +30,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="bg-[#EAE8F7] min-h-screen">
-          <div className="container mx-auto flex gap-6">
-            <Sidebar />
-            <div className="mt-[22px] w-[1260px]">
-              <TopNav />
-              {children}
+        <TableAndFilterOptionsMockDataProvider>
+          <main className="bg-[#EAE8F7] min-h-screen">
+            <div className="container mx-auto flex gap-6">
+              <Sidebar />
+              <div className="mt-[22px] w-[1260px]">
+                <TopNav />
+                {children}
+              </div>
             </div>
-          </div>
-        </main>
+          </main>
+        </TableAndFilterOptionsMockDataProvider>
       </body>
     </html>
   );
