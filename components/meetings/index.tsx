@@ -12,8 +12,12 @@ import LeftButtonAndTextCard from "@/components/ui/LeftButtonAndTextCard";
 const EmptyState = dynamic(() => import("@/components/ui/EmptyState"), { ssr: false });
 const FilterDropdown = dynamic(() => import("@/components/ui/FilterDropdown"), { ssr: false });
 
-const TableMockData = useTableOrFilter().tableMockData;
-const {filterOptions} = useTableOrFilter();
+const setTableMockData = ()=>{
+  const TableMockData = useTableOrFilter().tableMockData;
+  const {filterOptions} = useTableOrFilter();
+  return {TableMockData, filterOptions};
+}
+const {TableMockData, filterOptions} = setTableMockData();
 
 const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLowerCase().startsWith('all'));
 
