@@ -26,8 +26,8 @@ interface TableRowProps {
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
+  // const [text1, setText1] = useState('');
+  // const [text2, setText2] = useState('');
   const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>)
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -59,9 +59,9 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       }
     };
     if(pathname === "/meetings"){
-      const arr = row.columnOne.split("\n");
-      setText1(arr[0]);
-      setText2(arr[1]);
+      // const arr = row.columnOne.split("\n");
+      // setText1(arr[0]);
+      // setText2(arr[1]);
       setStatusMap({
         Upcoming: "upcoming",
         Held: "held",
@@ -82,7 +82,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       document.removeEventListener("keydown", handleKey);
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [showDelete, pathname, row.columnOne]);
+  }, [showDelete, pathname/*, row.columnOne*/]);
 
   const handleDelete = () => {
     setShowDelete(false);
@@ -100,8 +100,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         onKeyDown={handleDeliverableKey}
         style={{ whiteSpace: "nowrap" }}
       >
-        {pathname === "/meetings" && (<><p className="mb-1">{text1}</p><p>{text2}</p></>)}
-        {pathname === "/deliverables" && (<>{row.columnOne}</>)}
+        {row.columnOne}
       </td>
       <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnTwo}
