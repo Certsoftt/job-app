@@ -82,7 +82,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       document.removeEventListener("keydown", handleKey);
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [showDelete, pathname]);
+  }, [showDelete, pathname, row.columnOne]);
 
   const handleDelete = () => {
     setShowDelete(false);
