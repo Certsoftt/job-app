@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import DeliverablesComponent from "@/components/meetings";
+import MeetingComponent from "@/components/meetings";
 
 export const metadata: Metadata = {
   title: "Meetings | Nexoris App",
   description: "View and manage all your project deliverables in one place.",
   keywords: ["deliverables", "project management", "Nexoris", "tasks", "filter"],
-  robots: robots: {
+  robots: {
     index: false, // Prevents indexing
     follow: false, // Prevents following links on the page
     googleBot: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const MeetingsPage: React.FC = () => {
-  return <DeliverablesComponent />
+  return <MeetingComponent />
 };
 
-export default DeliverablesPage;
+export default MeetingsPage;

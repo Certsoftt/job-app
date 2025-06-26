@@ -17,7 +17,7 @@ const {filterOptions} = useTableOrFilter();
 
 const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLowerCase().startsWith('all'));
 
-const DeliverablesComponent: React.FC = () => {
+const MeetingComponent: React.FC = () => {
   // Single select for each filter
   const [client, setClient] = useState("");
   const [project, setProject] = useState("");
@@ -115,4 +115,4 @@ const DeliverablesComponent: React.FC = () => {
   );
 };
 
-export default React.memo(DeliverablesComponent);
+export default React.memo(MeetingComponent);
