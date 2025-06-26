@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
-// import { filterOptions, TableMockData } from "@/utils/mockTableAndFilterOptionsData";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
 import DeliverablesTableSection from "@/components/deliverables/default";
 import DeliverableDetail from "@/components/deliverables/detail";
@@ -12,16 +11,10 @@ import LeftButtonAndTextCard from "@/components/ui/LeftButtonAndTextCard";
 const EmptyState = dynamic(() => import("@/components/ui/EmptyState"), { ssr: false });
 const FilterDropdown = dynamic(() => import("@/components/ui/FilterDropdown"), { ssr: false });
 
-const setTableMockData = ()=>{
-  const TableMockData = useTableOrFilter().tableMockData;
-  const {filterOptions} = useTableOrFilter();
-  return {TableMockData, filterOptions};
-}
-const {TableMockData, filterOptions} = setTableMockData();
-
 const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLowerCase().startsWith('all'));
 
 const DeliverablesComponent: React.FC = () => {
+  const { tableMockData: TableMockData, filterOptions } = useTableOrFilter();
   // Single select for each filter
   const [client, setClient] = useState("");
   const [project, setProject] = useState("");
@@ -40,7 +33,7 @@ const DeliverablesComponent: React.FC = () => {
       const dateMatch = !date || row.columnSix.toLowerCase() === date.toLowerCase();
       return clientMatch && projectMatch && statusMatch && dateMatch;
     });
-  }, [client, project, status, date]);
+  }, [client, project, status, date, TableMockData]);
 
   // Handlers for opening/closing detail view
   const handleOpenDetail = (row: TableRowData) => setSelectedRow(row);
