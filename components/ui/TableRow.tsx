@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Badge, { BadgeVariant } from "./Badge";
 import DeleteConfirmModal from "@/components/deliverables/detail/DeleteConfirmModal";
 // import Image from "next/image";
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 import ActionsDropdown from "./ActionsDropdown";
 import { useActionsDropdownItems } from "@/utils/mockActionsDropdownData";
 
@@ -27,8 +27,8 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [showDelete, setShowDelete] = useState(false);
-  const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
-  const pathname = usePathname();
+  // const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
+  // const pathname = usePathname();
 
   // Keyboard accessibility for Deliverable cell
   const handleDeliverableKey = (e: React.KeyboardEvent) => {
@@ -39,23 +39,36 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   };
 
   // Status mapping logic
-  React.useEffect(() => {
-    if (pathname === "/meetings") {
-      setStatusMap({
-        Upcoming: "upcoming",
-        Held: "held",
-        Cancelled: "cancelled",
-      });
-    }
-    if (pathname === "/deliverables") {
-      setStatusMap({
-        Approved: "approved",
-        "Pending Approval": "pending",
-        "In Progress": "progress",
-        "Not Started": "notstarted",
-      });
-    }
-  }, [pathname]);
+  // React.useEffect(() => {
+  //   if (pathname === "/meetings") {
+  //     setStatusMap({
+  //       Upcoming: "upcoming",
+  //       Held: "held",
+  //       Cancelled: "cancelled",
+  //     });
+  //   }
+  //   if (pathname === "/deliverables") {
+  //     setStatusMap({
+  //       Approved: "approved",
+  //       "Pending Approval": "pending",
+  //       "In Progress": "progress",
+  //       "Not Started": "notstarted",
+  //     });
+  //   }
+  // }, [pathname]);
+
+  // Normalize status for badge variant
+  const normalizeStatus = (status: string): BadgeVariant => {
+    const s = status.toLowerCase();
+    if (s === "pending approval" || s === "pending") return "pending";
+    if (s === "in progress" || s === "progress") return "progress";
+    if (s === "not started" || s === "notstarted") return "notstarted";
+    if (s === "upcoming") return "upcoming";
+    if (s === "held") return "held";
+    if (s === "cancelled" || s === "canceled") return "cancelled";
+    if (s === "approved") return "approved";
+    return "pending";
+  };
 
   // Action handlers
   const handleView = () => onViewAction?.(row);
@@ -98,7 +111,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         {row.columnFour}
       </td>
       <td className="px-4 py-4 w-[160px] text-center align-middle">
-        <Badge variant={statusMap[row.columnFive] || (pathname === "/deliverables" ? "notstarted" : "cancelled")}>{row.columnFive}</Badge>
+        <Badge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</Badge>
       </td>
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnSix}
