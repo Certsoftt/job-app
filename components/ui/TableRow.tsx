@@ -27,7 +27,7 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [showDelete, setShowDelete] = useState(false);
-  const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
+  // const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
   const pathname = usePathname();
 
   // Keyboard accessibility for Deliverable cell
@@ -39,23 +39,23 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   };
 
   // Status mapping logic
-  React.useEffect(() => {
-    if (pathname === "/meetings") {
-      setStatusMap({
-        Upcoming: "upcoming",
-        Held: "held",
-        Cancelled: "cancelled",
-      });
-    }
-    if (pathname === "/deliverables") {
-      setStatusMap({
-        Approved: "approved",
-        "Pending Approval": "pending",
-        "In Progress": "progress",
-        "Not Started": "notstarted",
-      });
-    }
-  }, [pathname]);
+  // React.useEffect(() => {
+  //   if (pathname === "/meetings") {
+  //     setStatusMap({
+  //       Upcoming: "upcoming",
+  //       Held: "held",
+  //       Cancelled: "cancelled",
+  //     });
+  //   }
+  //   if (pathname === "/deliverables") {
+  //     setStatusMap({
+  //       Approved: "approved",
+  //       "Pending Approval": "pending",
+  //       "In Progress": "progress",
+  //       "Not Started": "notstarted",
+  //     });
+  //   }
+  // }, [pathname]);
 
   // Normalize status for badge variant
   const normalizeStatus = (status: string): BadgeVariant => {
