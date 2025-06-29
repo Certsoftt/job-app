@@ -97,7 +97,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         aria-label={`View details for ${row.columnOne}`}
         onClick={() => onDeliverableClick?.(row)}
         onKeyDown={handleDeliverableKey}
-        style={{ whiteSpace: "nowrap" }}
+        style={{ whiteSpace: "pre-line" }}
       >
         {row.columnOne}
       </td>

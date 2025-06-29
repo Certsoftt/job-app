@@ -61,16 +61,16 @@ export default function TableAndFilterOptionsMockDataProvider({children}:TableCo
       date: ["Today", "Tommorrow", "May 2 2025", "June 2 2025", "July 4 2025"],
     });
     setTableMockData([
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Sprint Planning", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Design Review", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Canceled", columnSix: "Google Meet" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "E-Commerce Platform", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Canceled", columnSix: "Google Meet" },
-      { columnOne: "June 2 2025\n2:30 p.m.", columnThree: "Mobile App Redesign", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Held", columnSix: "Zoom" },
-      { columnOne: "July 4 2025\n7:30 a.m.", columnThree: "HR Portal", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Sprint Planning", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Design Review", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "E-Commerce Platform", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Cancelled", columnSix: "Google Meet" },
+      { columnOne: "June 2 2025\n2:30 pm", columnThree: "Mobile App Redesign", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Held", columnSix: "Zoom" },
+      { columnOne: "July 4 2025\n7:30 am", columnThree: "HR Portal", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
     ])
   }
   },[pathname])
