@@ -57,6 +57,19 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
     }
   }, [pathname]);
 
+  // Normalize status for badge variant
+  const normalizeStatus = (status: string): BadgeVariant => {
+    const s = status.toLowerCase();
+    if (s === "pending approval" || s === "pending") return "pending";
+    if (s === "in progress" || s === "progress") return "progress";
+    if (s === "not started" || s === "notstarted") return "notstarted";
+    if (s === "upcoming") return "upcoming";
+    if (s === "held") return "held";
+    if (s === "cancelled" || s === "canceled") return "cancelled";
+    if (s === "approved") return "approved";
+    return "pending";
+  };
+
   // Action handlers
   const handleView = () => onViewAction?.(row);
   // const handleEdit = () => {/* Add edit logic here */};
@@ -98,7 +111,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         {row.columnFour}
       </td>
       <td className="px-4 py-4 w-[160px] text-center align-middle">
-        <Badge variant={statusMap[row.columnFive] || (pathname === "/deliverables" ? "notstarted" : "cancelled")}>{row.columnFive}</Badge>
+        <Badge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</Badge>
       </td>
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnSix}
