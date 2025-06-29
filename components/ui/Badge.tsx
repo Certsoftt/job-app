@@ -15,6 +15,7 @@ const fallbackStyle = "bg-[#E2E8F0] text-[#232427] border border-[#A09CB6]";
 
 const Badge: React.FC<BadgeProps> = ({ children, variant }) => {
   const pathname = usePathname();
+  const normalizedVariant = variant.toLowerCase() as BadgeVariant;
   const [badgeStyles, setBadgeStyles] = useState({} as Record<BadgeVariant, string>)
   useEffect(()=>{
     if(pathname === "/meetings"){
@@ -52,7 +53,7 @@ const Badge: React.FC<BadgeProps> = ({ children, variant }) => {
   }, [pathname])
   return(
     <span
-      className={`font-poppins font-semibold text-sm rounded-md ${variant === "pending"?"badge_pending_1366":"px-2"} py-1 min-w-[120px] text-center inline-block capitalize ${badgeStyles[variant] || fallbackStyle}`}
+      className={`font-poppins font-semibold text-sm rounded-md ${normalizedVariant === "pending"?"badge_pending_1366":"px-2"} py-1 min-w-[120px] text-center inline-block capitalize ${badgeStyles[normalizedVariant] || fallbackStyle}`}
       role="status"
       aria-label={children as string}
     >
