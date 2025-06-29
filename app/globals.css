@@ -1,8 +1,66 @@
 @import "tailwindcss";
 
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+@layer utilities {
+  @media (min-width: 1366px) {
+    .filterdropdown_1366 {
+      min-width: 100px;
+    }
+    .badge_pending_1366 {
+      padding-right: 0.5px;
+      padding-left: 0.5px;
+    }
+  }
+}
+
 :root {
-  --background: #ffffff;
+  --background: #f6f6fb;
   --foreground: #171717;
+  /* Primary Colors */
+  --primary-900: #543CDA;
+  --primary-800: #6d52e1;
+  --primary-700: #7e6cdd;
+  --primary-600: #9686e0;
+  --primary-500: #b7a9e7;
+  --primary-400: #d6d0f3;
+  --primary-300: #edeafd;
+  /* Secondary Colors */
+  --secondary-900: #0057ff;
+  --secondary-800: #2d7aff;
+  --secondary-700: #4d8fff;
+  --secondary-600: #7bb3fa;
+  --secondary-500: #b3d2fa;
+  --secondary-400: #d6e6fa;
+  --secondary-300: #eaf2fe;
+  /* Grey Colors */
+  --grey-900: #444444;
+  --grey-800: #5a5a5a;
+  --grey-700: #7a7a7a;
+  --grey-600: #bdbdbd;
+  --grey-500: #e0e0e0;
+  --grey-400: #f2f2f2;
+  --grey-300: #f8f8f8;
+  /* Black Colors */
+  --black-900: #0a0e17;
+  --black-800: #232427;
+  --black-700: #444547;
+  --black-600: #7a7b7c;
+  --black-500: #bdbdbd;
+  --black-400: #e0e0e0;
+  --black-300: #f2f2f2;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+.font-inter {
+  font-family: 'Inter', Arial, Helvetica, sans-serif !important;
+}
+
+.font-poppins {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif !important;
 }
 
 @theme inline {
@@ -19,8 +77,20 @@
   }
 }
 
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Utility classes for background and text colors */
+.bg-main { background-color: var(--grey-500);}
+.bg-primary { background-color: var(--primary-900); }
+.bg-secondary { background-color: var(--secondary-900); }
+.bg-grey { background-color: var(--grey-400); }
+.bg-black { background-color: var(--black-900); }
+.text-primary { color: var(--primary-800); }
+.text-secondary { color: var(--secondary-900); }
+.text-grey { color: var(--grey-900); }
+.text-black { color: var(--black-900); }

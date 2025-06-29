@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { PostsProvider } from "@/lib/PostContext";
+import Sidebar from "@/components/Sidebar";
+import TopNav from "@/components/TopNav";
+import TableAndFilterOptionsMockDataProvider from "@/utils/mockTableAndFilterOptionsData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Blog Post",
-  description: "Check out your Blog posts",
+  title: "Nexoris App",
+  description: "Project Management UI",
 };
 
 export default function RootLayout({
@@ -26,9 +28,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PostsProvider>{children}</PostsProvider>
+        <TableAndFilterOptionsMockDataProvider>
+          <main className="bg-[#EAE8F7] min-h-screen">
+            <div className="container mx-auto flex gap-6">
+              <Sidebar />
+              <div className="mt-[22px] w-[1260px]">
+                <TopNav />
+                {children}
+              </div>
+            </div>
+          </main>
+        </TableAndFilterOptionsMockDataProvider>
       </body>
     </html>
   );

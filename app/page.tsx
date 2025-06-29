@@ -1,10 +1,17 @@
-import CardPost from "@/components/CardPost";
+import { Metadata } from "next";
+
+export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Dashboard | Nexoris App",
+  description: "View and manage all your project deliverables in one place.",
+  keywords: ["deliverables", "project management", "Nexoris", "tasks", "filter"],
+  robots: "index, follow",
+};
 
 const Home = () => {
-  return (
-    <section className="px-5 xl:px-18 py-10">
-      <CardPost />
-    </section>
+  return(
+    <>Dashboard</>
   );
 };
 
