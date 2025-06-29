@@ -1,6 +1,6 @@
 type LeftButtonAndTextCardProps = {
     h1: string;
-    button: string;
+    button?: string;
 }
 
 const LeftButtonAndTextCard = ({h1, button}:LeftButtonAndTextCardProps)=>(
