@@ -27,10 +27,21 @@ export default function TableHeader() {
       setColumns([
         { label: "Date & Time", width: "w-[180px]" },
         { label: "Client", width: "w-[180px]" },
-        { label: "Project", width: "w-[2600px]" },
+        { label: "Project", width: "w-[260px]" },
         { label: "Purpose", width: "w-[200px]" },
         { label: "Status", width: "w-[160px]" },
         { label: "Platform", width: "w-[140px]" },
+        { label: "Actions", width: "w-[120px]" },
+      ])
+    }
+    if(pathname === "/clients"){
+      setColumns([
+        { label: "Client Name", width: "w-[180px]" },
+        { label: "# Of Projects", width: "w-[140px]" },
+        { label: "Client Status", width: "w-[180px]" },
+        { label: "Last Active", width: "w-[200px]" },
+        { label: "Phone", width: "w-[160px]" },
+        { label: "Email", width: "w-[260px]" },
         { label: "Actions", width: "w-[120px]" },
       ])
     }

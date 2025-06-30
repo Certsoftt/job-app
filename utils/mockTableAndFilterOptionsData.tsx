@@ -61,16 +61,36 @@ export default function TableAndFilterOptionsMockDataProvider({children}:TableCo
       date: ["Today", "Tommorrow", "May 2 2025", "June 2 2025", "July 4 2025"],
     });
     setTableMockData([
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Sprint Planning", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Design Review", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Canceled", columnSix: "Google Meet" },
-      { columnOne: "May 2 2025\n11:00 a.m.", columnThree: "E-Commerce Platform", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Canceled", columnSix: "Google Meet" },
-      { columnOne: "June 2 2025\n2:30 p.m.", columnThree: "Mobile App Redesign", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Held", columnSix: "Zoom" },
-      { columnOne: "July 4 2025\n7:30 a.m.", columnThree: "HR Portal", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Sprint Planning", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Design Review", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Upcoming", columnSix: "Zoom" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Dashboard Feedback", columnFive: "Held", columnSix: "Teams" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "Food Delivery Website", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
+      { columnOne: "May 2 2025\n11:00 am", columnThree: "E-Commerce Platform", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Cancelled", columnSix: "Google Meet" },
+      { columnOne: "June 2 2025\n2:30 pm", columnThree: "Mobile App Redesign", columnTwo: "Tayo Wellens", columnFour: "Requirements Gathering", columnFive: "Held", columnSix: "Zoom" },
+      { columnOne: "July 4 2025\n7:30 am", columnThree: "HR Portal", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
+    ])
+  }
+  if(pathname === "/clients"){
+    setFilterOptions({
+      client: ["All Clients", "Tayo Wellens", "Andrew James"],
+      project: ["All Projects", "3", "2"],
+      status: ["All Status", "New", "Prospect", "Onboarding"],
+      date: ["Today", "Tommorrow", "May 2 2025", "June 2 2025", "July 4 2025"],
+    });
+    setTableMockData([
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "-", columnFive: "08135217281", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08135217281", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "-", columnFive: "09138133224", columnSix: "atmonidexz@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "Prospect", columnTwo: "2", columnFour: "-", columnFive: "09138133224", columnSix: "atmonidexz@gmail.com" },
+      { columnOne: "Andrew James", columnThree: "Onboarding", columnTwo: "2", columnFour: "Today", columnFive: "08135217281", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Andrew James", columnThree: "Onboarding", columnTwo: "2", columnFour: "-", columnFive: "09138133224", columnSix: "atmonidexz@gmail.com" },
     ])
   }
   },[pathname])
