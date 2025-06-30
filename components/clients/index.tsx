@@ -2,6 +2,9 @@
 import React, { useState, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
+import Overview from "@/components/clients/Overview";
+import BackButton from "@/components/deliverables/detail/BackButton";
+import { mockOverviewCardData } from "@/components/clients/mockOverviewCardData";
 import DeliverablesTableSection from "@/components/deliverables/default";
 import DeliverableDetail from "@/components/deliverables/detail";
 import Image from "next/image";
@@ -15,55 +18,63 @@ const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLow
 
 const ClientComponent: React.FC = () => {
   const { tableMockData: TableMockData, filterOptions } = useTableOrFilter();
-  // Single select for each filter
-  // const [client, setClient] = useState("");
   const [project, setProject] = useState("");
   const [status, setStatus] = useState("");
-  // const [date, setDate] = useState("");
-  // Detail view state
   const [selectedRow, setSelectedRow] = useState<TableRowData | null>(null);
+  const [lastViewedClient, setLastViewedClient] = useState<TableRowData | null>(null);
 
   // Filtering logic
   const filteredData = useMemo(() => {
     if (!project && !status) return TableMockData;
     return TableMockData.filter(row => {
-      // const clientMatch = !client || row.columnTwo.toLowerCase() === client.toLowerCase();
       const projectMatch = !project || row.columnThree.toLowerCase() === project.toLowerCase();
       const statusMatch = !status || row.columnFive.toLowerCase() === status.toLowerCase();
-      // const dateMatch = !date || row.columnOne.toLowerCase() === date.toLowerCase();
       return projectMatch && statusMatch;
     });
   }, [project, status, TableMockData]);
 
-  // Handlers for opening/closing detail view
-  const handleOpenDetail = (row: TableRowData) => setSelectedRow(row);
-  const handleBack = () => setSelectedRow(null);
-  // Remove row from filteredData and TableMockData on delete
-  const handleDelete = () => {
-    if (!selectedRow) return;
-    // Remove from TableMockData (simulate, in real app use state or context)
-    const idx = TableMockData.findIndex(
-      r => r.columnOne === selectedRow.columnOne && r.columnTwo === selectedRow.columnTwo && r.columnThree === selectedRow.columnThree && r.columnSix === selectedRow.columnSix
-    );
-    if (idx !== -1) TableMockData.splice(idx, 1);
-    setSelectedRow(null);
+  // Handlers for opening/closing overview
+  const handleOpenOverview = (row: TableRowData) => {
+    setSelectedRow(row);
+    setLastViewedClient(row);
+    // Optionally: persist to localStorage/sessionStorage for reload restore
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("lastViewedClient", JSON.stringify(row));
+    }
   };
+  const handleBack = () => {
+    setSelectedRow(null);
+    // Optionally: clear from sessionStorage
+    if (typeof window !== "undefined") {
+      window.sessionStorage.removeItem("lastViewedClient");
+    }
+  };
+
+  // Restore last viewed client on mount
+  React.useEffect(() => {
+    if (!selectedRow && typeof window !== "undefined") {
+      const stored = window.sessionStorage.getItem("lastViewedClient");
+      if (stored) {
+        setSelectedRow(JSON.parse(stored));
+      }
+    }
+  }, []);
 
   // Table section props
   const tableSectionProps = {
     data: filteredData,
-    onDeliverableClick: handleOpenDetail,
-    onViewAction: handleOpenDetail,
+    onDeliverableClick: handleOpenOverview,
+    onViewAction: handleOpenOverview,
   };
 
   return (
     <>
       <section className="w-[96%] ml-[3.9%] mt-8">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 w-full">
-          {TableMockData.length !== 0 && (
+          {TableMockData.length !== 0 && !selectedRow && (
             <LeftButtonAndTextCard h1="Clients"/>
           )}
-          {/* Only show filters if not in detail view */}
+          {/* Only show filters if not in overview */}
           {(!selectedRow && TableMockData.length !== 0) && (
             <div className="flex flex-wrap gap-4 mb-0 mt-2 md:mt-4" aria-label="Filter client">
               <FilterDropdown label="Project" options={getFilterOptions(filterOptions.project)} value={project} onChange={setProject} />
@@ -73,7 +84,7 @@ const ClientComponent: React.FC = () => {
         </div>
         <div className="flex flex-col items-center justify-center min-h-[400px] md:min-h-[500px]">
           <Suspense fallback={<div>Loading...</div>}>
-            {/* Conditional rendering: Table/EmptyState or Detail */}
+            {/* Conditional rendering: Table/EmptyState or Overview */}
             {!selectedRow ? (
               filteredData.length === 0 && TableMockData.length !== 0 ? (
                 <EmptyState
@@ -89,9 +100,18 @@ const ClientComponent: React.FC = () => {
                 TableMockData.length !== 0 && <DeliverablesTableSection {...tableSectionProps} />
               )
             ) : (
-              TableMockData.length !== 0 && <DeliverableDetail row={selectedRow as TableRowData} onBack={handleBack} onDelete={handleDelete} />
+              TableMockData.length !== 0 && (
+                <>
+                  <BackButton onClick={handleBack} />
+                  <Overview
+                    deliverablesInProgress={mockOverviewCardData.deliverablesInProgress}
+                    scheduledMeetings={mockOverviewCardData.scheduledMeetings}
+                    selectedRow={selectedRow}
+                  />
+                </>
+              )
             )}
-            {/* If no deliverables, show empty state */
+            {/* If no clients, show empty state */
             TableMockData.length === 0 && (
               <EmptyState
                 icon={

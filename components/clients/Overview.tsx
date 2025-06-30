@@ -4,6 +4,7 @@ import Image from "next/image";
 import ShortCard from "./ShortCard";
 import OverviewSkeleton from "./OverviewSkeleton";
 import { useOverviewContext } from "./OverviewContext";
+import { TableRowData } from "@/components/ui/TableRow";
 
 const iconMap = {
   projects: "/file.svg",
@@ -16,15 +17,19 @@ const iconMap = {
   message: "/message.svg",
 };
 
-const Overview: React.FC = () => {
+interface OverviewProps {
+  deliverablesInProgress: number;
+  scheduledMeetings: number;
+  selectedRow?: TableRowData;
+}
+
+const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMeetings}) => {
   const {
     assignedTeam,
     totalProjects,
-    deliverablesInProgress,
-    scheduledMeetings,
-    unpaidInvoices,
     loading,
     clientName,
+    unpaidInvoices,
   } = useOverviewContext();
 
   useEffect(() => {
@@ -34,19 +39,20 @@ const Overview: React.FC = () => {
   if (loading) return <OverviewSkeleton />;
 
   return (
-    <div className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl p-8 w-full">
-      <div className="flex items-center gap-6 mb-8">
-        <Image src="/Profile-pic.svg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
-        <div className="flex-1">
-          <h2 className="text-2xl font-bold text-[#232323] mb-1">{clientName || "Tayo Wellens"}</h2>
-          <div className="flex gap-4 text-[#A09CB6] text-sm">
-            <button className="flex items-center gap-1"><Image src={iconMap.call} alt="Call" width={18} height={18} />Call</button>
-            <button className="flex items-center gap-1"><Image src={iconMap.email} alt="Email" width={18} height={18} />Email</button>
-            <button className="flex items-center gap-1"><Image src={iconMap.message} alt="Message" width={18} height={18} />Message</button>
-          </div>
+    <section className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl mt-6">
+        <div className="flex items-center gap-6 mb-8 justify-between">
+            <div className="flex gap-4">
+                <Image src="/avatar-client.jpg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
+                <h2 className="text-2xl font-bold text-[#232323] mb-1">{clientName || "Tayo Wellens"}</h2>
+            </div>
+            <div className="flex-1">
+                <div className="flex gap-4 text-[#A09CB6] text-sm">
+                    <button className="flex items-center gap-1"><Image src={iconMap.call} alt="Call" width={18} height={18} />Call</button>
+                    <button className="flex items-center gap-1"><Image src={iconMap.email} alt="Email" width={18} height={18} />Email</button>
+                    <button className="flex items-center gap-1"><Image src={iconMap.message} alt="Message" width={18} height={18} />Message</button>
+                </div>
+            </div>
         </div>
-      </div>
-      {/* Tabs */}
       <div className="flex gap-12 border-b border-[#E3DEFF] mb-8">
         {['Overview', 'Projects', 'Payments', 'Meetings'].map(tab => (
           <div key={tab} className="relative pb-2 cursor-pointer text-lg font-semibold text-[#232323] opacity-90">
@@ -86,7 +92,6 @@ const Overview: React.FC = () => {
         title="Assigned Team"
         value={assignedTeam.length === 0 ? <span className="text-[#A09CB6]">No assigned team</span> : null}
         iconSrc={iconMap.team}
-        className="w-full min-h-[120px]"
       >
         {assignedTeam.length > 0 && (
           <div className="mt-2 text-xs text-[#232323]">
@@ -99,7 +104,7 @@ const Overview: React.FC = () => {
           </div>
         )}
       </ShortCard>
-    </div>
+    </section>
   );
 };
 
