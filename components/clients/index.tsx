@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Suspense, useMemo, useEffect } from "react";
+import React, { useState, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
 import DeliverablesTableSection from "@/components/deliverables/default";
@@ -16,29 +16,24 @@ const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLow
 const ClientComponent: React.FC = () => {
   const { tableMockData: TableMockData, filterOptions } = useTableOrFilter();
   // Single select for each filter
-  const [client, setClient] = useState("");
+  // const [client, setClient] = useState("");
   const [project, setProject] = useState("");
   const [status, setStatus] = useState("");
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
   // Detail view state
   const [selectedRow, setSelectedRow] = useState<TableRowData | null>(null);
 
-  useEffect(()=>{
-    setClient((prevValue)=> prevValue);
-    setDate((prevValue)=> prevValue);
-  }, [])
-
   // Filtering logic
   const filteredData = useMemo(() => {
-    if (!client && !project && !status && !date) return TableMockData;
+    if (!project && !status) return TableMockData;
     return TableMockData.filter(row => {
-      const clientMatch = !client || row.columnTwo.toLowerCase() === client.toLowerCase();
+      // const clientMatch = !client || row.columnTwo.toLowerCase() === client.toLowerCase();
       const projectMatch = !project || row.columnThree.toLowerCase() === project.toLowerCase();
       const statusMatch = !status || row.columnFive.toLowerCase() === status.toLowerCase();
-      const dateMatch = !date || row.columnOne.toLowerCase() === date.toLowerCase();
-      return clientMatch && projectMatch && statusMatch && dateMatch;
+      // const dateMatch = !date || row.columnOne.toLowerCase() === date.toLowerCase();
+      return projectMatch && statusMatch;
     });
-  }, [client, project, status, date, TableMockData]);
+  }, [project, status, TableMockData]);
 
   // Handlers for opening/closing detail view
   const handleOpenDetail = (row: TableRowData) => setSelectedRow(row);
