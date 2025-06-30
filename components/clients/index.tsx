@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Suspense, useMemo } from "react";
+import React, { useState, Suspense, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
 import DeliverablesTableSection from "@/components/deliverables/default";
@@ -22,6 +22,11 @@ const ClientComponent: React.FC = () => {
   const [date, setDate] = useState("");
   // Detail view state
   const [selectedRow, setSelectedRow] = useState<TableRowData | null>(null);
+
+  useEffect(()=>{
+    setClient((prevValue)=> prevValue);
+    setDate((prevValue)=> prevValue);
+  }, [])
 
   // Filtering logic
   const filteredData = useMemo(() => {
