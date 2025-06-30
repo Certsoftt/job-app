@@ -24,7 +24,7 @@ const ShortCard: React.FC<ShortCardProps> = ({
   children,
 }) => (
   <div
-    className={`relative bg-[#F8F6FF] border ${highlight ? "border-[#5A3EE6]" : "border-[#E3DEFF]"} rounded-lg p-5 min-w-[220px] min-h-[120px] flex flex-col justify-between cursor-pointer transition-shadow hover:shadow-lg ${className}`}
+    className={`border border-l-4 border-l-[#5B2EDD] relative bg-white ${highlight ? "border-[ #5A3EE6]" : "border-[#C6B9F6]"} rounded-lg p-5 min-w-[220px] min-h-[120px] flex flex-col justify-between cursor-pointer transition-shadow hover:shadow-lg ${className}`}
     onClick={onClick}
     tabIndex={0}
     role={onClick ? "button" : undefined}
