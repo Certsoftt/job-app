@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Suspense, useMemo, useEffect } from "react";
+import React, { useState, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
 import DeliverablesTableSection from "@/components/deliverables/default";
