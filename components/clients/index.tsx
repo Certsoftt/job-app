@@ -6,7 +6,7 @@ import Overview from "@/components/clients/Overview";
 import BackButton from "@/components/deliverables/detail/BackButton";
 import { mockOverviewCardData } from "@/components/clients/mockOverviewCardData";
 import DeliverablesTableSection from "@/components/deliverables/default";
-import DeliverableDetail from "@/components/deliverables/detail";
+// import DeliverableDetail from "@/components/deliverables/detail";
 import Image from "next/image";
 import { TableRowData } from "@/components/ui/TableRow";
 import LeftButtonAndTextCard from "@/components/ui/LeftButtonAndTextCard";
@@ -40,6 +40,7 @@ const ClientComponent: React.FC = () => {
     // Optionally: persist to localStorage/sessionStorage for reload restore
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem("lastViewedClient", JSON.stringify(row));
+      console.log(lastViewedClient);
     }
   };
   const handleBack = () => {
@@ -58,7 +59,7 @@ const ClientComponent: React.FC = () => {
         setSelectedRow(JSON.parse(stored));
       }
     }
-  }, []);
+  }, [selectedRow]);
 
   // Table section props
   const tableSectionProps = {
