@@ -69,7 +69,6 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
           value={totalProjects}
           subtitle="Active Projects"
           iconSrc={iconMap.projects}
-          highlight
         />
         <ShortCard
           title="Deliverables In Progress"
