@@ -3,6 +3,7 @@ import { ActionsDropdownItem } from "@/components/ui/ActionsDropdown";
 import { usePathname } from "next/navigation";
 
 export const useActionsDropdownItems = (handlers: {
+  // onClientView: () => void,
   onView: () => void,
   onEdit: () => void,
   onDelete?: () => void,

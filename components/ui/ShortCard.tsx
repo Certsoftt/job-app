@@ -31,13 +31,15 @@ const ShortCard: React.FC<ShortCardProps> = ({
     aria-label={title}
   >
     <div className="flex items-center justify-between mb-2">
-      <span className="text-xs font-medium text-[#232323] opacity-80">{title}</span>
-      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#F3F0FF]">
+    <span>
+        <span className="text-xs font-medium text-[#232323] opacity-80">{title}</span>
+        {subtitle && <div className="text-xs text-[#A09CB6] font-normal">{subtitle}</div>}
+    </span>
+    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#F3F0FF]">
         <Image src={iconSrc} alt={title + " icon"} width={20} height={20} />
-      </span>
+    </span>
     </div>
     <div className="text-2xl font-bold text-[#232323] mb-1">{value}</div>
-    {subtitle && <div className="text-xs text-[#A09CB6] font-normal">{subtitle}</div>}
     {children}
   </div>
 );

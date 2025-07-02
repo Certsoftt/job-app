@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import Badge, { BadgeVariant } from "./Badge";
-import DeleteConfirmModal from "@/components/deliverables/detail/DeleteConfirmModal";
+import dynamic from "next/dynamic";
+import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 // import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import ActionsDropdown from "./ActionsDropdown";
 import { useActionsDropdownItems } from "@/utils/mockActionsDropdownData";
-import { useOverviewContext } from "@/components/clients/OverviewContext";
-import { useRouter } from "next/navigation";
+import { useOverviewContext } from "@/components/clients/overview/OverviewContext";
+// import { useRouter } from "next/navigation";
+const DeliverablesBadge = dynamic(() => import("@/components/deliverables/Badge"), { ssr: false });
+const MeetingsBadge = dynamic(() => import("@/components/meetings/Badge"), { ssr: false });
 
 export interface TableRowData {
   columnOne: string;
@@ -29,7 +31,7 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [showDelete, setShowDelete] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
   const { setClientName } = useOverviewContext();
   // const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
   const pathname = usePathname();
@@ -43,7 +45,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   };
 
   // Normalize status for badge variant
-  const normalizeStatus = (status: string): BadgeVariant => {
+  const normalizeStatus = (status: string) => {
     const s = status.toLowerCase();
     if (s === "pending approval" || s === "pending") return "pending";
     if (s === "in progress" || s === "progress") return "progress";
@@ -58,7 +60,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   // Action handlers
   const handleView = () => {
     setClientName(row.columnThree || row.columnTwo || ""); // Use client name from row
-    router.push("/clients/overview"); // Route to overview page
+    // router.push("/clients/overview"); // Route to overview page
     onViewAction?.(row);
   };
   // const handleEdit = () => {/* Add edit logic here */};
@@ -100,17 +102,20 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         {row.columnFour}
       </td>
       <td className={`px-4 py-4 w-[160px] text-center align-middle ${pathname === "/clients"?"font-poppins text-sm text-[#232323]":""}`}>
-        {pathname === "/clients" 
-        ?<React.Fragment>{row.columnFive}</React.Fragment>
-        :<Badge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</Badge>
-        }
+        {pathname === "/clients" ? (
+          <React.Fragment>{row.columnFive}</React.Fragment>
+        ) : pathname === "/meetings" ? (
+          <MeetingsBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</MeetingsBadge>
+        ) : (
+          <DeliverablesBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</DeliverablesBadge>
+        )}
       </td>
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnSix}
       </td>
       <td className="cursor-pointer px-4 py-4 w-[120px] text-right align-middle relative">
         <ActionsDropdown items={menuItems} />
-        <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleConfirmDelete} />
+        <DeleteConfirmModal title="Delete Row?" description="Are you sure you want to delete this row? This action cannot be undone." open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleConfirmDelete} />
       </td>
     </tr>
   );

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Tabs from "./Tabs";
 import DetailOverview from "./DetailOverview";
-import BackButton from "./BackButton";
+import BackButton from "../../ui/BackButton";
 import { TableRowData } from "@/components/ui/TableRow";
 import ReviewRequest from "./ReviewRequest";
 import { mockReviewRequests } from "@/utils/mockReviewRequests";
@@ -39,7 +39,7 @@ const DeliverableDetail: React.FC<DeliverableDetailProps> = ({ row, onBack, onDe
       {
         id: (prev.length + 1).toString(),
         user: "Client",
-        avatar: "/avatar-client.jpg",
+        avatar: "/comment_avatar.svg",
         message: msg,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       },

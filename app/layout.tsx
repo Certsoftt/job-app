@@ -4,7 +4,7 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import TopNav from "@/components/TopNav";
 import TableAndFilterOptionsMockDataProvider from "@/utils/mockTableAndFilterOptionsData";
-import { OverviewProvider } from "@/components/clients/OverviewContext";
+import { OverviewProvider } from "@/components/clients/overview/OverviewContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

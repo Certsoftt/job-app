@@ -1,20 +1,20 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import ShortCard from "./ShortCard";
+import ShortCard from "../../ui/ShortCard";
 import OverviewSkeleton from "./OverviewSkeleton";
 import { useOverviewContext } from "./OverviewContext";
 import { TableRowData } from "@/components/ui/TableRow";
 
 const iconMap = {
-  projects: "/file.svg",
-  deliverables: "/window.svg",
-  meetings: "/globe.svg",
-  invoices: "/vercel.svg",
-  team: "/next.svg",
-  call: "/call.svg",
-  email: "/email.svg",
-  message: "/message.svg",
+  projects: "/overview/total_projects.svg",
+  deliverables: "/overview/deliverables.svg",
+  meetings: "/overview/scheduled.svg",
+  invoices: "/overview/unpaid_invoice.svg",
+  team: "/overview/assigned_team.svg",
+  call: "/overview/phone-ringing.svg",
+  email: "/overview/mail-send-envelope.svg",
+  message: "/overview/chat-bubble-message.svg",
 };
 
 interface OverviewProps {
@@ -23,12 +23,11 @@ interface OverviewProps {
   selectedRow?: TableRowData;
 }
 
-const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMeetings}) => {
+const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMeetings, selectedRow }) => {
   const {
     assignedTeam,
     totalProjects,
     loading,
-    clientName,
     unpaidInvoices,
   } = useOverviewContext();
 
@@ -38,21 +37,23 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
 
   if (loading) return <OverviewSkeleton />;
 
+  // Determine client name robustly from selectedRow
+  let displayClientName = selectedRow?.columnOne?.trim();
+  if (!displayClientName) displayClientName = "Client Name Unavailable";
+
   return (
-    <section className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl mt-6">
-        <div className="flex items-center gap-6 mb-8 justify-between">
-            <div className="flex gap-4">
-                <Image src="/avatar-client.jpg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
-                <h2 className="text-2xl font-bold text-[#232323] mb-1">{clientName || "Tayo Wellens"}</h2>
-            </div>
-            <div className="flex-1">
-                <div className="flex gap-4 text-[#A09CB6] text-sm">
-                    <button className="flex items-center gap-1"><Image src={iconMap.call} alt="Call" width={18} height={18} />Call</button>
-                    <button className="flex items-center gap-1"><Image src={iconMap.email} alt="Email" width={18} height={18} />Email</button>
-                    <button className="flex items-center gap-1"><Image src={iconMap.message} alt="Message" width={18} height={18} />Message</button>
-                </div>
-            </div>
+    <section className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl">
+      <div className="flex items-center gap-6 mb-8">
+        <Image src="/Profile-pic.svg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold text-[#232323] mb-1">{displayClientName}</h2>
+          <div className="flex gap-4 text-[#A09CB6] text-sm">
+            <button className="flex items-center gap-1"><Image src={iconMap.call} alt="Call" width={18} height={18} />Call</button>
+            <button className="flex items-center gap-1"><Image src={iconMap.email} alt="Email" width={18} height={18} />Email</button>
+            <button className="flex items-center gap-1"><Image src={iconMap.message} alt="Message" width={18} height={18} />Message</button>
+          </div>
         </div>
+      </div>
       <div className="flex gap-12 border-b border-[#E3DEFF] mb-8">
         {['Overview', 'Projects', 'Payments', 'Meetings'].map(tab => (
           <div key={tab} className="relative pb-2 cursor-pointer text-lg font-semibold text-[#232323] opacity-90">
@@ -69,7 +70,6 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
           value={totalProjects}
           subtitle="Active Projects"
           iconSrc={iconMap.projects}
-          highlight
         />
         <ShortCard
           title="Deliverables In Progress"
