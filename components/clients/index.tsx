@@ -2,11 +2,9 @@
 import React, { useState, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
-// import Overview from "@/components/clients/Overview";
 import BackButton from "@/components/ui/BackButton";
 import { mockOverviewCardData } from "@/utils/mockOverviewCardData";
 import DeliverablesTableSection from "@/components/deliverables/default";
-// import DeliverableDetail from "@/components/deliverables/detail";
 import Image from "next/image";
 import { TableRowData } from "@/components/ui/TableRow";
 import LeftButtonAndTextCard from "@/components/ui/LeftButtonAndTextCard";
