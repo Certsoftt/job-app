@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image";
 
 const iconMap = {
@@ -11,11 +11,13 @@ interface TopClientCardProps {
   displayClientName: string;
 }
 
+const tabList = ['Overview', 'Projects', 'Payments', 'Meetings'];
 
 const TopClientCard: React.FC<TopClientCardProps> = ({displayClientName}) => {
+  const [activeTab, setActiveTab] = useState(tabList[0]);
   return (
-    <section className="bg-white border border-[#E3DEFF] rounded-xl p-4 w-full mb-6">
-        <div className="flex items-center justify-between border-b border-[ #E3DEFF] gap-6 mb-8">
+    <section className="bg-white border border-[#E3DEFF] rounded-xl p-4 w-full mb-4">
+        <div className="flex items-center justify-between border-b border-[#E3DEFF] gap-6 mb-8">
             <div className="flex gap-4 mb-2">
                 <Image src="/comment_avatar.svg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
                 <h2 className="flex text-2xl font-bold text-[#232323] items-center mb-1">{displayClientName}</h2>
@@ -28,13 +30,19 @@ const TopClientCard: React.FC<TopClientCardProps> = ({displayClientName}) => {
                 </div>
             </div>
         </div>
-        <div className="flex gap-12 mb-4 pb-2">
-            {['Overview', 'Projects', 'Payments', 'Meetings'].map(tab => (
-            <div key={tab} className="relative pb-2 cursor-pointer text-lg font-semibold text-[#232323] opacity-90">
+        <div className="flex gap-12 justify-evenly mb-2 pb-2">
+            {tabList.map(tab => (
+              <div
+                key={tab}
+                className={`relative pb-2 cursor-pointer text-lg font-semibold transition-colors duration-300 ${activeTab === tab ? "text-[#232323]" : "text-[#A09CB6]"}`}
+                onClick={() => setActiveTab(tab)}
+              >
                 {tab}
-                {/* TODO: Add tab state logic */}
-                {tab === 'Overview' && <div className="absolute left-0 right-0 -bottom-[1px] h-[3px] bg-[ #5A3EE6] rounded-t" />}
-            </div>
+                <div
+                  className={`absolute left-0 right-0 -bottom-[1px] h-[3px] rounded-t transition-all duration-300 ${activeTab === tab ? "bg-[#5A3EE6]" : "bg-transparent"}`}
+                  style={{ transitionProperty: 'background, width' }}
+                />
+              </div>
             ))}
         </div>
     </section>
