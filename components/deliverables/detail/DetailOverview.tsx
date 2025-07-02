@@ -6,7 +6,7 @@ import AddLink from "./AddLink";
 import Image from "next/image";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 import { TableRowData } from "@/components/ui/TableRow";
-import MultiAutocomplete, { Option } from "./MultiAutocomplete";
+import MultiAutocomplete, { Option } from "../../ui/MultiAutocomplete";
 import { mockTeamOptions } from "@/utils/mockTeamOptions";
 
 interface DeliverableData extends TableRowData {

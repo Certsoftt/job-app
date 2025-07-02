@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import Badge, { BadgeVariant } from "./Badge";
-import DeleteConfirmModal from "@/components/deliverables/detail/DeleteConfirmModal";
+import dynamic from "next/dynamic";
+import { BadgeVariant } from "./Badge";
+import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 // import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import ActionsDropdown from "./ActionsDropdown";
 import { useActionsDropdownItems } from "@/utils/mockActionsDropdownData";
 import { useOverviewContext } from "@/components/clients/OverviewContext";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+const Badge = dynamic(() => import("@/components/ui/Badge"), { ssr: false });
 
 export interface TableRowData {
   columnOne: string;
@@ -29,7 +31,7 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
   const [showDelete, setShowDelete] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
   const { setClientName } = useOverviewContext();
   // const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
   const pathname = usePathname();
@@ -58,7 +60,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   // Action handlers
   const handleView = () => {
     setClientName(row.columnThree || row.columnTwo || ""); // Use client name from row
-    router.push("/clients/overview"); // Route to overview page
+    // router.push("/clients/overview"); // Route to overview page
     onViewAction?.(row);
   };
   // const handleEdit = () => {/* Add edit logic here */};

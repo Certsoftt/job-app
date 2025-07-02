@@ -2,9 +2,9 @@
 import React, { useState, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTableOrFilter } from "@/utils/mockTableAndFilterOptionsData";
-import Overview from "@/components/clients/Overview";
-import BackButton from "@/components/deliverables/detail/BackButton";
-import { mockOverviewCardData } from "@/components/clients/mockOverviewCardData";
+// import Overview from "@/components/clients/Overview";
+import BackButton from "@/components/ui/BackButton";
+import { mockOverviewCardData } from "@/utils/mockOverviewCardData";
 import DeliverablesTableSection from "@/components/deliverables/default";
 // import DeliverableDetail from "@/components/deliverables/detail";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import { TableRowData } from "@/components/ui/TableRow";
 import LeftButtonAndTextCard from "@/components/ui/LeftButtonAndTextCard";
 
 const EmptyState = dynamic(() => import("@/components/ui/EmptyState"), { ssr: false });
+const Overview = dynamic(() => import("@/components/clients/Overview"), { ssr: false });
 const FilterDropdown = dynamic(() => import("@/components/ui/FilterDropdown"), { ssr: false });
 
 const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLowerCase().startsWith('all'));
@@ -103,7 +104,7 @@ const ClientComponent: React.FC = () => {
             ) : (
               TableMockData.length !== 0 && (
                 <>
-                  <BackButton onClick={handleBack} />
+                  <BackButton onClick={handleBack} className="flex justify-start"/>
                   <Overview
                     deliverablesInProgress={mockOverviewCardData.deliverablesInProgress}
                     scheduledMeetings={mockOverviewCardData.scheduledMeetings}
