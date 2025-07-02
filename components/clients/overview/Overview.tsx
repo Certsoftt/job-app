@@ -43,7 +43,7 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
       <TopClientCard displayClientName={displayClientName} />
       <section className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl p-4 w-full">
       {/* Short Cards */}
-        <div className="flex gap-6 mb-4">
+        <div className="flex gap-3 mb-4">
           <ShortCard
             title="Total Projects"
             value={totalProjects}
