@@ -46,10 +46,10 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
       <div className="flex items-center justify-between gap-6 mb-8">
         <div className="flex gap-4">
           <Image src="/comment_avatar.svg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
-          <h2 className="text-2xl font-bold text-[#232323] items-center mb-1">{displayClientName}</h2>
+          <h2 className="flex text-2xl font-bold text-[#232323] items-center mb-1">{displayClientName}</h2>
         </div>
         <div className="flex-1">
-          <div className="flex gap-4 justify-end text-[#A09CB6] text-sm gap-6">
+          <div className="flex gap-4 justify-end text-[#A09CB6] text-sm gap-8">
             <button className="flex items-center gap-1"><Image src={iconMap.call} alt="Call" width={18} height={18} />Call</button>
             <button className="flex items-center gap-1"><Image src={iconMap.email} alt="Email" width={18} height={18} />Email</button>
             <button className="flex items-center gap-1"><Image src={iconMap.message} alt="Message" width={18} height={18} />Message</button>
@@ -88,24 +88,25 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
           value={<span className="font-bold">{unpaidInvoices}K</span>}
           iconSrc={iconMap.invoices}
         />
-        <ShortCard
-          title="Assigned Team"
-          value={assignedTeam.length === 0 ? <span className="text-[#A09CB6]">No assigned team</span> : null}
-          iconSrc={iconMap.team}
-          className="min-w-[220px] max-w-[220px] min-h-[120px] max-h-[120px]"
-        >
-          {assignedTeam.length > 0 && (
-            <div className="mt-2 text-xs text-[#232323]">
-              {assignedTeam.map(tm => (
-                <div key={tm.value} className="mb-1">
-                  <span className="font-medium">{tm.role ? tm.role + ": " : ""}</span>
-                  <span className="font-bold">{tm.label}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </ShortCard>
       </div>
+      {/* Assigned Team Card */}
+      <ShortCard
+        title="Assigned Team"
+        value={assignedTeam.length === 0 ? <span className="text-[#A09CB6]">No assigned team</span> : null}
+        iconSrc={iconMap.team}
+        className="min-w-[220px] max-w-[220px] min-h-[120px]"
+      >
+        {assignedTeam.length > 0 && (
+          <div className="mt-2 text-xs text-[#232323]">
+            {assignedTeam.map(tm => (
+              <div key={tm.value} className="mb-1">
+                <span className="font-medium">{tm.role ? tm.role + ": " : ""}</span>
+                <span className="font-bold">{tm.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </ShortCard>
     </section>
   );
 };
