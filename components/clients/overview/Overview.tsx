@@ -44,12 +44,12 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
   return (
     <section className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl p-4 w-full">
       <div className="flex items-center justify-between gap-6 mb-8">
-        <div className="flex-1">
+        <div className="flex gap-4">
           <Image src="/comment_avatar.svg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
           <h2 className="text-2xl font-bold text-[#232323] items-center mb-1">{displayClientName}</h2>
         </div>
         <div className="flex-1">
-          <div className="flex gap-4 text-[#A09CB6] text-sm gap-6">
+          <div className="flex gap-4 justify-end text-[#A09CB6] text-sm gap-6">
             <button className="flex items-center gap-1"><Image src={iconMap.call} alt="Call" width={18} height={18} />Call</button>
             <button className="flex items-center gap-1"><Image src={iconMap.email} alt="Email" width={18} height={18} />Email</button>
             <button className="flex items-center gap-1"><Image src={iconMap.message} alt="Message" width={18} height={18} />Message</button>
