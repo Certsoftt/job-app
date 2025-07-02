@@ -26,8 +26,8 @@ const ClientComponent: React.FC = () => {
   const filteredData = useMemo(() => {
     if (!project && !status) return TableMockData;
     return TableMockData.filter(row => {
-      const projectMatch = !project || row.columnThree.toLowerCase() === project.toLowerCase();
-      const statusMatch = !status || row.columnFive.toLowerCase() === status.toLowerCase();
+      const projectMatch = !project || row.columnThree.toLowerCase().includes(project.toLowerCase());
+      const statusMatch = !status || row.columnFive.toLowerCase().includes(status.toLowerCase());
       return projectMatch && statusMatch;
     });
   }, [project, status, TableMockData]);
