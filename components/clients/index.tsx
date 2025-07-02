@@ -104,7 +104,9 @@ const ClientComponent: React.FC = () => {
             ) : (
               TableMockData.length !== 0 && (
                 <>
-                  <BackButton onClick={handleBack} className="flex justify-start"/>
+                  <div className="w-full flex justify-start items-start mb-2">
+                    <BackButton onClick={handleBack} />
+                  </div>
                   <Overview
                     deliverablesInProgress={mockOverviewCardData.deliverablesInProgress}
                     scheduledMeetings={mockOverviewCardData.scheduledMeetings}
