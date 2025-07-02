@@ -112,7 +112,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       </td>
       <td className="cursor-pointer px-4 py-4 w-[120px] text-right align-middle relative">
         <ActionsDropdown items={menuItems} />
-        <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleConfirmDelete} />
+        <DeleteConfirmModal title="Delete Row?" description="Are you sure you want to delete this row? This action cannot be undone." open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleConfirmDelete} />
       </td>
     </tr>
   );
