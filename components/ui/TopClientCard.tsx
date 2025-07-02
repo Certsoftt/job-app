@@ -14,7 +14,7 @@ interface TopClientCardProps {
 
 const TopClientCard: React.FC<TopClientCardProps> = ({displayClientName}) => {
   return (
-    <section className="bg-white border border-[#E3DEFF] rounded-xl p-4 w-full mb-6">
+    <section className="bg-white border border-[#E3DEFF] rounded-xl p-4 w-full mb-4">
         <div className="flex items-center justify-between border-b border-[ #E3DEFF] gap-6 mb-8">
             <div className="flex gap-4 mb-2">
                 <Image src="/comment_avatar.svg" alt="Profile" width={64} height={64} className="rounded-full border border-[#E3DEFF]" />
@@ -28,7 +28,7 @@ const TopClientCard: React.FC<TopClientCardProps> = ({displayClientName}) => {
                 </div>
             </div>
         </div>
-        <div className="flex gap-12 mb-4 pb-2">
+        <div className="flex gap-12 justify-evenly mb-2 pb-2">
             {['Overview', 'Projects', 'Payments', 'Meetings'].map(tab => (
             <div key={tab} className="relative pb-2 cursor-pointer text-lg font-semibold text-[#232323] opacity-90">
                 {tab}
