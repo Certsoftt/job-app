@@ -41,7 +41,7 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
   return (
     <>
       <TopClientCard displayClientName={displayClientName} />
-      <section className="bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl p-4 w-full">
+      <section className="flex justify-center items-center bg-[#F8F6FF] border border-[#E3DEFF] rounded-xl p-4 w-full">
       {/* Short Cards */}
         <div className="flex gap-3 mb-4">
           <ShortCard
