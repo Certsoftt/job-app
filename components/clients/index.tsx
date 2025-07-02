@@ -12,7 +12,7 @@ import { TableRowData } from "@/components/ui/TableRow";
 import LeftButtonAndTextCard from "@/components/ui/LeftButtonAndTextCard";
 
 const EmptyState = dynamic(() => import("@/components/ui/EmptyState"), { ssr: false });
-const Overview = dynamic(() => import("@/components/clients/Overview"), { ssr: false });
+const Overview = dynamic(() => import("@/components/clients/overview/Overview"), { ssr: false });
 const FilterDropdown = dynamic(() => import("@/components/ui/FilterDropdown"), { ssr: false });
 
 const getFilterOptions = (options: string[]) => options.filter(opt => !opt.toLowerCase().startsWith('all'));

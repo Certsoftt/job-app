@@ -7,7 +7,7 @@ import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 import { usePathname } from 'next/navigation';
 import ActionsDropdown from "./ActionsDropdown";
 import { useActionsDropdownItems } from "@/utils/mockActionsDropdownData";
-import { useOverviewContext } from "@/components/clients/OverviewContext";
+import { useOverviewContext } from "@/components/clients/overview/OverviewContext";
 // import { useRouter } from "next/navigation";
 const Badge = dynamic(() => import("@/components/ui/Badge"), { ssr: false });
 

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import ShortCard from "../ui/ShortCard";
+import ShortCard from "../../ui/ShortCard";
 import OverviewSkeleton from "./OverviewSkeleton";
 import { useOverviewContext } from "./OverviewContext";
 import { TableRowData } from "@/components/ui/TableRow";
