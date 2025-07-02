@@ -88,24 +88,24 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
           value={<span className="font-bold">{unpaidInvoices}K</span>}
           iconSrc={iconMap.invoices}
         />
+        <ShortCard
+          title="Assigned Team"
+          value={assignedTeam.length === 0 ? <span className="text-[#A09CB6]">No assigned team</span> : null}
+          iconSrc={iconMap.team}
+          className="min-w-[220px] max-w-[220px] min-h-[120px] max-h-[120px]"
+        >
+          {assignedTeam.length > 0 && (
+            <div className="mt-2 text-xs text-[#232323]">
+              {assignedTeam.map(tm => (
+                <div key={tm.value} className="mb-1">
+                  <span className="font-medium">{tm.role ? tm.role + ": " : ""}</span>
+                  <span className="font-bold">{tm.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </ShortCard>
       </div>
-      {/* Assigned Team Card */}
-      <ShortCard
-        title="Assigned Team"
-        value={assignedTeam.length === 0 ? <span className="text-[#A09CB6]">No assigned team</span> : null}
-        iconSrc={iconMap.team}
-      >
-        {assignedTeam.length > 0 && (
-          <div className="mt-2 text-xs text-[#232323]">
-            {assignedTeam.map(tm => (
-              <div key={tm.value} className="mb-1">
-                <span className="font-medium">{tm.role ? tm.role + ": " : ""}</span>
-                <span className="font-bold">{tm.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </ShortCard>
     </section>
   );
 };
