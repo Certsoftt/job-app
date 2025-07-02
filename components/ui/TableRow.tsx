@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { BadgeVariant } from "./Badge";
 import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 // import Image from "next/image";
 import { usePathname } from 'next/navigation';
@@ -9,7 +8,8 @@ import ActionsDropdown from "./ActionsDropdown";
 import { useActionsDropdownItems } from "@/utils/mockActionsDropdownData";
 import { useOverviewContext } from "@/components/clients/overview/OverviewContext";
 // import { useRouter } from "next/navigation";
-const Badge = dynamic(() => import("@/components/ui/Badge"), { ssr: false });
+const DeliverablesBadge = dynamic(() => import("@/components/deliverables/Badge"), { ssr: false });
+const MeetingsBadge = dynamic(() => import("@/components/meetings/Badge"), { ssr: false });
 
 export interface TableRowData {
   columnOne: string;
@@ -45,7 +45,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   };
 
   // Normalize status for badge variant
-  const normalizeStatus = (status: string): BadgeVariant => {
+  const normalizeStatus = (status: string) => {
     const s = status.toLowerCase();
     if (s === "pending approval" || s === "pending") return "pending";
     if (s === "in progress" || s === "progress") return "progress";
@@ -102,10 +102,13 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         {row.columnFour}
       </td>
       <td className={`px-4 py-4 w-[160px] text-center align-middle ${pathname === "/clients"?"font-poppins text-sm text-[#232323]":""}`}>
-        {pathname === "/clients" 
-        ?<React.Fragment>{row.columnFive}</React.Fragment>
-        :<Badge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</Badge>
-        }
+        {pathname === "/clients" ? (
+          <React.Fragment>{row.columnFive}</React.Fragment>
+        ) : pathname === "/meetings" ? (
+          <MeetingsBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</MeetingsBadge>
+        ) : (
+          <DeliverablesBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</DeliverablesBadge>
+        )}
       </td>
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnSix}
