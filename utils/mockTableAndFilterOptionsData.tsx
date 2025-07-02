@@ -73,6 +73,26 @@ export default function TableAndFilterOptionsMockDataProvider({children}:TableCo
       { columnOne: "July 4 2025\n7:30 am", columnThree: "HR Portal", columnTwo: "Tayo Wellens", columnFour: "Retrospective", columnFive: "Cancelled", columnSix: "Google Meet" },
     ])
   }
+  if(pathname === "/clients"){
+    setFilterOptions({
+      client: ["All Clients", "Tayo Wellens", "Andrew James"],
+      project: ["All Projects", "3", "2"],
+      status: ["All Status", "New", "Prospect", "Onboarding"],
+      date: ["Today", "Tommorrow", "May 2 2025", "June 2 2025", "July 4 2025"],
+    });
+    setTableMockData([
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08148106698", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "-", columnFive: "08135217281", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "Today", columnFive: "08135217281", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "New", columnTwo: "3", columnFour: "-", columnFive: "09138133224", columnSix: "atmonidexz@gmail.com" },
+      { columnOne: "Tayo Wellens", columnThree: "Prospect", columnTwo: "2", columnFour: "-", columnFive: "09138133224", columnSix: "atmonidexz@gmail.com" },
+      { columnOne: "Andrew James", columnThree: "Onboarding", columnTwo: "2", columnFour: "Today", columnFive: "08135217281", columnSix: "Tayowells@gmail.com" },
+      { columnOne: "Andrew James", columnThree: "Onboarding", columnTwo: "2", columnFour: "-", columnFive: "09138133224", columnSix: "atmonidexz@gmail.com" },
+    ])
+  }
   },[pathname])
   return(
     <TableColumnContext.Provider value={{filterOptions, tableMockData}}>

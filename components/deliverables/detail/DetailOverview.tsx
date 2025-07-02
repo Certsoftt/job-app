@@ -4,9 +4,9 @@ import EditableText from "./EditableText";
 import FileUpload from "./FileUpload";
 import AddLink from "./AddLink";
 import Image from "next/image";
-import DeleteConfirmModal from "./DeleteConfirmModal";
+import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 import { TableRowData } from "@/components/ui/TableRow";
-import MultiAutocomplete, { Option } from "./MultiAutocomplete";
+import MultiAutocomplete, { Option } from "../../ui/MultiAutocomplete";
 import { mockTeamOptions } from "@/utils/mockTeamOptions";
 
 interface DeliverableData extends TableRowData {
@@ -76,7 +76,7 @@ const DetailOverview: React.FC<DetailOverviewProps> = ({ row, onDelete }) => {
 
   return (
     <section className="mt-6 bg-white rounded-xl border border-[#C6B9F6] border-l-4 border-l-[#5B2EDD] p-0 overflow-hidden">
-      <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleDelete} />
+      <DeleteConfirmModal title="Delete Deliverable?" description="Are you sure you want to delete this deliverable? This action cannot be undone." open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleDelete} />
       {/* Tabs */}
       <div className="border-b border-[#C6B9F6] rounded-t-xl bg-[#F7F5FF]">
         {/* Tabs component will be imported here */}
