@@ -28,7 +28,6 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
     assignedTeam,
     totalProjects,
     loading,
-    clientName,
     unpaidInvoices,
   } = useOverviewContext();
 
