@@ -7,10 +7,11 @@ import PaymentsSkeleton from "./PaymentsSkeleton";
 import { mockPaymentsData } from "./mockPaymentsData";
 import FilterDropdown from "@/components/ui/FilterDropdown";
 import BackButton from "@/components/ui/BackButton";
+import { TableRowData } from "@/components/ui/TableRow";
 
 const PAGE_SIZE_OPTIONS = [5, 7, 10];
 
-const Payments: React.FC<{ selectedRow?: any; onBack: () => void }> = ({ selectedRow, onBack }) => {
+const Payments: React.FC<{ selectedRow?: TableRowData; onBack: () => void }> = ({ selectedRow, onBack }) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0]);
@@ -21,6 +22,11 @@ const Payments: React.FC<{ selectedRow?: any; onBack: () => void }> = ({ selecte
   const filteredData = mockPaymentsData.filter(row => {
     const statusMatch = !status || row.status.toLowerCase().includes(status.toLowerCase());
     const projectMatch = !project || row.project.toLowerCase().includes(project.toLowerCase());
+    setLoading(true);
+    // Simulate loading delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
     return statusMatch && projectMatch;
   });
   const total = Math.ceil(filteredData.length / pageSize);

@@ -2,8 +2,17 @@ import React from "react";
 import PaymentsBadge from "./Badge";
 import ActionsDropdown from "@/components/ui/ActionsDropdown";
 
+export interface TableRowData {
+  invoice: string;
+  amount: string;
+  project: string;
+  milestone: string;
+  status: string;
+  date: string;
+}
+
 interface TableRowProps {
-  row: any;
+  row: TableRowData;
 }
 
 const rowBorderColor = (status: string) => {
