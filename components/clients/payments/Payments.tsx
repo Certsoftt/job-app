@@ -4,7 +4,7 @@ import TopClientCard from "@/components/ui/TopClientCard";
 import Table from "./Table";
 import Pagination from "@/components/ui/Pagination";
 import PaymentsSkeleton from "./PaymentsSkeleton";
-import { mockPaymentsData } from "./mockPaymentsData";
+import { mockPaymentsData } from "../../../utils/mockPaymentsData";
 import FilterDropdown from "@/components/ui/FilterDropdown";
 import BackButton from "@/components/ui/BackButton";
 import { TableRowData } from "@/components/ui/TableRow";

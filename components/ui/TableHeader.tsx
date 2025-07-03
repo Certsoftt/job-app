@@ -49,7 +49,7 @@ export default function TableHeader() {
   
   return (
     <thead>
-      <tr className="bg-[linear-gradient(0deg,_#E3DEFF_0%,_#E3DEFF_100%),_#E3DEFF] border border-[#C6B9F6] rounded-lg min-h-[56px]">
+      <tr className="shadow-[1px_1px_2px_rgba(0,0,0,0.1)] bg-[linear-gradient(0deg,_#E3DEFF_0%,_#E3DEFF_100%),_#E3DEFF] mb-4 border border-[#C6B9F6] rounded-lg min-h-[56px]">
         {columns.map((col, idx) => (
           <th
             key={col.label}

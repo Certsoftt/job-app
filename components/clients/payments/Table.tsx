@@ -1,9 +1,10 @@
 import React from "react";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
+import { mockPaymentsData } from "@/utils/mockPaymentsData";
 
 interface TableProps {
-  data: any[];
+  data: typeof mockPaymentsData;
   loading?: boolean;
 }
 

@@ -24,7 +24,7 @@ const rowBorderColor = (status: string) => {
 };
 
 const TableRow: React.FC<TableRowProps> = ({ row }) => (
-  <tr className={`bg-white border-l-4 ${rowBorderColor(row.status)} transition-all`}>
+  <tr className={`bg-white border-l-4 ${rowBorderColor(row.status)} transition-all shadow-[1px_1px_2px_rgba(0,0,0,0.1)] mb-4`}>
     <td className="px-6 py-4 font-poppins text-[#232323] text-base">{row.invoice}</td>
     <td className="px-6 py-4 font-poppins text-[#232323] text-base">{row.amount}</td>
     <td className="px-6 py-4 font-poppins text-[#232323] text-base">{row.project}</td>
