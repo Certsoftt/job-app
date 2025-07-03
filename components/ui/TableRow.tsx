@@ -80,9 +80,9 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   });
 
   return (
-    <tr className="border-b border-[#E3DEFF] bg-white">
+    <tr className="border-b border-[#E3DEFF] bg-white mb-4 shadow-[1px_1px_2px_rgba(0,0,0,0.1)]">
       <td
-        className="px-4 mb-4 py-4 w-[260px] text-center align-middle font-poppins text-sm text-[#232323] cursor-pointer hover:underline focus:underline outline-none"
+        className="px-4 py-4 w-[260px] text-center align-middle font-poppins text-sm text-[#232323] cursor-pointer hover:underline focus:underline outline-none"
         tabIndex={0}
         role="button"
         aria-label={`View details for ${row.columnOne}`}
@@ -92,16 +92,16 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       >
         {row.columnOne}
       </td>
-      <td className="px-4 mb-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+      <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnTwo}
       </td>
-      <td className="px-4 mb-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+      <td className="px-4 py-4 w-[180px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnThree}
       </td>
-      <td className="px-4 mb-4 py-4 w-[200px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+      <td className="px-4 py-4 w-[200px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnFour}
       </td>
-      <td className={`px-4 mb-4 py-4 w-[160px] text-center align-middle ${pathname === "/clients"?"font-poppins text-sm text-[#232323]":""}`}>
+      <td className={`px-4 py-4 w-[160px] text-center align-middle ${pathname === "/clients"?"font-poppins text-sm text-[#232323]":""}`}>
         {pathname === "/clients" ? (
           <React.Fragment>{row.columnFive}</React.Fragment>
         ) : pathname === "/meetings" ? (
@@ -110,10 +110,10 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
           <DeliverablesBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</DeliverablesBadge>
         )}
       </td>
-      <td className="px-4 mb-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
+      <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnSix}
       </td>
-      <td className="cursor-pointer mb-4 px-4 py-4 w-[120px] text-right align-middle relative">
+      <td className="cursor-pointer px-4 py-4 w-[120px] text-right align-middle relative">
         <ActionsDropdown items={menuItems} />
         <DeleteConfirmModal title="Delete Row?" description="Are you sure you want to delete this row? This action cannot be undone." open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleConfirmDelete} />
       </td>
