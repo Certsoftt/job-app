@@ -32,7 +32,7 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
     // Optionally, fetch or sync data here
   }, []);
 
-  if (loading) return <OverviewSkeleton />;
+  if (!loading) return <OverviewSkeleton />;
 
   // Determine client name robustly from selectedRow
   let displayClientName = selectedRow?.columnOne?.trim();
