@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from "next/image";
 import OverviewSkeleton from "@/components/clients/overview/OverviewSkeleton";
+import { TableRowData } from "@/components/ui/TableRow";
 
 const iconMap = {
   call: "/overview/phone-ringing.svg",
@@ -10,7 +11,7 @@ const iconMap = {
 
 interface TopClientCardProps {
   displayClientName: string;
-  selectedRow?: any;
+  selectedRow?: TableRowData;
 }
 
 const tabList = ['Overview', 'Projects', 'Payments', 'Meetings'];
