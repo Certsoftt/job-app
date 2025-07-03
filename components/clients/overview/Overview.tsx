@@ -41,9 +41,9 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
   return (
     <>
       <TopClientCard displayClientName={displayClientName} />
-      <section className="flex pl-2 rounded-xl p-4 w-full">
+      <section className="flex flex-wrap justify-center rounded-xl p-4 mb-4 w-full">
       {/* Short Cards */}
-        <div className="flex gap-3 mb-4">
+        <div className="flex gap-3">
           <ShortCard
             title="Total Projects"
             value={totalProjects}
@@ -66,6 +66,8 @@ const Overview: React.FC<OverviewProps> = ({ deliverablesInProgress, scheduledMe
             iconSrc={iconMap.invoices}
           />
         </div>
+      </section>
+      <section className="flex justify-start rounded-xl p-4 w-full">
         {/* Assigned Team Card */}
         <ShortCard
           title="Assigned Team"
