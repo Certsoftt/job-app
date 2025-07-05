@@ -80,7 +80,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
   });
 
   return (
-    <tr className="border-b border-[#E3DEFF] bg-white">
+    <tr className="border-b border-[#E3DEFF] bg-white mb-4 shadow-[1px_1px_2px_rgba(0,0,0,0.1)]">
       <td
         className="px-4 py-4 w-[260px] text-center align-middle font-poppins text-sm text-[#232323] cursor-pointer hover:underline focus:underline outline-none"
         tabIndex={0}
